@@ -1,0 +1,276 @@
+%$HeadURL: https://subversion.assembla.com/svn/cfpt-courses/trunk/Labo_Outils/LaTeX/templates/template_enonce_TPI/enonce_tpi.tex $
+%$LastChangedDate: 2013-11-25 18:52:57 +0100 (lun., 25 nov. 2013) $
+%$LastChangedRevision: 5041 $
+%$LastChangedBy: marechal $
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[latin1]{inputenc}				% Gestion des caractéres accentués
+\usepackage[T1]{fontenc}					% nouvelle norme de LaTeX pour le code des caractères
+\usepackage[francais]{babel}				% typographie française
+
+%-------------------------------------------------------------------------------------
+% informations sur le document
+%-------------------------------------------------------------------------------------
+
+\newcommand{\annee}{2014-2015}
+
+\newcommand{\enseignantname}{Maréchal}
+\newcommand{\enseignantlastname}{Christophe}
+\newcommand{\enseignantemail}{christophe.marechal@edu.ge.ch}
+		 
+\newcommand{\candidatname}{Froelicher}
+\newcommand{\candidatlastname}{Jean-Philippe}
+\newcommand{\candidatphone}{076 822 36 33}
+\newcommand{\candidatemail}{froelicher.jeanphilippe@gmail.com}
+
+\newcommand{\projetTitle}{Web TV center}
+
+%-------------------------------------------------------------------------------------
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{varwidth}
+\usepackage[french]{varioref}				% références croisées plus intelligentes : \vref et \vpageref
+\usepackage{multicol}
+
+% fonts arial
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{pag}
+\renewcommand{\ttdefault}{pcr}
+
+% mise en forme
+\usepackage{setspace} 						% Interligne
+	\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+% format marges 
+\usepackage[left=1.50cm, right=1.50cm, top=2.00cm, bottom=2.00cm]{geometry}
+	
+%supprime toute indentation de paragraphe
+\setlength{\parindent}{0cm}
+
+% configuration pour les images
+\usepackage{graphicx}
+	\DeclareGraphicsExtensions{.png, .PNG, .jpg, .JPG}
+	\graphicspath{{figures/}{images/}}
+
+\usepackage{mdframed}
+\definecolor{titlecolor}{gray}{0.5}
+\definecolor{sectioncolor}{gray}{0.9}
+
+\mdfdefinestyle{frametitlestyle}{
+	backgroundcolor=titlecolor,
+	linecolor=black
+	}
+\mdfdefinestyle{framesectionstyle}{linecolor=black, innertopmargin=10pt, innerbottommargin=10pt}
+
+\newcommand{\tpiTitle}[1]{%
+	\begin{mdframed}[style=frametitlestyle]
+		\vspace{2mm}
+		\normalfont\Large\center\bfseries
+		\textcolor{white}{#1}
+		\vspace{2mm}
+	\end{mdframed}
+	\vspace{3ex}
+}
+
+\newenvironment{tpiSection}[1]{%
+\begin{mdframed}[backgroundcolor=sectioncolor]
+	\vspace{1mm}
+	\centering
+		#1
+	\vspace{1mm}
+\end{mdframed} %
+\begin{mdframed}
+}%
+{
+\end{mdframed}
+\vspace{3mm}
+}
+
+\mdfdefinestyle{anotherFramesectionstyle}{linecolor=black, innertopmargin=10pt, innerbottommargin=10pt,frametitlefont=\normalfont,%
+frametitlerule=true,frametitlebackgroundcolor=sectioncolor,frametitlerulewidth=.4pt, frametitleaboveskip=0pt}
+
+\newenvironment{anotherTpiSection}[1]{%
+\begin{mdframed}[style=anotherFramesectionstyle,frametitle={\begin{center}
+#1
+\end{center}}]
+}%
+{
+\end{mdframed}
+\vspace{3mm}
+}
+
+% formatage pied page
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+
+\fancyfoot[L]{\sl\small\projetTitle\\\tiny\candidatname~\candidatlastname}
+\fancyfoot[C]{}
+\fancyfoot[R]{\small Énoncé TSEM2 \annee~: \thepage\ / \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{2pt}	
+	
+% debuggage
+\usepackage{lipsum}				% lipsum pour texte aléatoire
+
+% typewriter font with hyphenation already enabled, see http://tex.stackexchange.com/questions/44361/how-to-automatically-hyphenate-within-texttt
+\newcommand\textvtt[1]{{\normalfont\fontfamily{cmvtt}\selectfont #1}}
+
+\usepackage{embedfile}
+\newcommand{\docpath}{./}
+\embedfile{\docpath \jobname .tex}
+
+\begin{document}
+% logo
+\vspace*{-14mm}
+\setlength\fboxrule{0pt}	% suppression bordure
+\fbox{
+	\begin{minipage}{12mm}
+		\includegraphics[width=10mm]{Post-Tenebras-Lux.jpg}
+	\end{minipage}
+	\begin{minipage}{150mm}
+		\vspace{5mm}
+		{\scriptsize REPUBLIQUE ET CANTON DE GENEVE\\
+		DEPARTEMENT DE L'INSTRUCTION PUBLIQUE, DE LA CULTURE ET DU SPORT\\
+		ENSEIGNEMENT SECONDAIRE II POSTOBLIGATOIRE}\\
+		\footnotesize\textbf{Centre de formation professionnelle technique\\
+		Ecole d'informatique}
+	\end{minipage}
+}
+
+\vspace{10mm}
+
+% titre
+\tpiTitle{Énoncé TSEM2 \annee}
+
+% candidat / enseignant
+\hspace{-3mm}
+\fbox{
+\begin{minipage}{0.45\textwidth}
+	\begin{tpiSection}{Données candidat}
+		\begin{tabular}{l@{~}l}
+			 Nom~:&  \candidatname\\ 
+			 Prénom~:&  \candidatlastname\\ 
+			 Téléphone~:& \candidatphone\\ 
+			 E-mail~:& \scriptsize\textvtt{\candidatemail}
+		\end{tabular} 
+	\end{tpiSection}
+	\end{minipage}
+}
+\hspace{11mm}
+\fbox{	
+\begin{minipage}{0.45\textwidth}
+	\begin{tpiSection}{Données enseignant}
+		\begin{tabular}{l@{~}p{5cm}}
+			 Nom~:&  \enseignantname\\ 
+			 Prénom~:&  \enseignantlastname\\ 
+			 ~ & ~ \\
+			 E-mail~:& \small\textvtt{\enseignantemail}
+		\end{tabular}	
+	\end{tpiSection}
+	\end{minipage}
+}
+
+
+% titre du projet
+\begin{anotherTpiSection}{Titre du projet}
+\projetTitle
+\end{anotherTpiSection}
+
+% objectifs du projet
+\begin{anotherTpiSection}{Objectifs du projet}
+Créer une application de notification(alerte) pour les \textbf{WEB TV} et la plateforme de streaming \textbf{TWITCH}. \\
+Apprentissage et prise en main de l'API Twitch et Dailymotion.
+\end{anotherTpiSection}
+
+% description détaillée
+\begin{anotherTpiSection}{Description détaillée}
+\textbf{Glossaire :} \\
+STREAM(n.m) : Vidéo en direct. \\
+STREAMER : Être en train de diffuser une vidéo. \\
+STREAMING : Diffusion de vidéos\\
+STREAMEUR : Personne diffusant une vidéo \\
+WEB TV : Structure regroupant une ou plusieurs chaines TV. Une TV est un stream. Une Web TV est un ensemble de chaine qui fonctionne comme une chaine de télévision normal. Il y a des créneau horaire pour chaque streameurs. Chaque Web TV a ses streameurs qu'elles payent comme des employés.  \\
+ÉMISSION : Activité sur le stream, un streameur peut avoir plusieurs émission. \\
+TWITCH : Twitch est un site permettant à n'importe qui de streamer, chaque utilisateur à une chaine Twitch et peut oui ou non streamer. \\
+
+Les WEB TV n'utilisent pas toutes les même plateforme de streaming pour leurs TV, il y en a deux, Twitch et Dailymotion.
+
+\begin{center}
+\textbf{Web TV}
+
+\includegraphics[scale=0.8]{images/schemaWebTV.png}
+
+\begin{itemize}
+\item Lorsqu'un streameur commence une émission, l'application notifie l'utilisateur en indiquant qu'une émission a commencé sur un des streams.
+\item Si une émission est en cours, l'application permet de la regarder.
+\item Lorsqu'une chaine TV commence, l'application notifie l'utilisateur.
+\item Gestion des notifications pour chaque Web TV.
+\end{itemize}
+
+
+\textbf{Twitch}
+
+\includegraphics[scale=0.8]{images/schemaTwitch.png}
+\begin{itemize}
+\item La plateforme Twitch permet de suivre des streameurs "indépendant", actuellement, lorsqu'un streameurs commence son stream, une notification est envoyé par e-mail. Le but est de pouvoir saisir le nom Twitch du streameur, et lorsque il commence son stream, l'application notifie l'utilisateur.
+\item Pouvoir regarder le stream d'un utilisateur Twitch.
+\item Gestion des notification pour chaque chaine Twitch.
+\end{itemize}
+
+\textbf{Bonus}
+\end{center}
+Pouvoir rentrer le nom d'une chaine sur Youtube et lorsque celle-ci sort une vidéo sur Youtube, notifie l'utilisateur
+\end{anotherTpiSection}
+
+% modele conceptuel
+\begin{anotherTpiSection}{Modèle conceptuel}
+sans objet
+
+\end{anotherTpiSection}
+
+% inventaire des étapes
+\begin{anotherTpiSection}{Inventaire des étapes du projet}
+
+\end{anotherTpiSection}
+
+% inventaire matériel
+\begin{anotherTpiSection}{Inventaire du matériel}
+	\begin{itemize}
+		\item PC + 2 écrans
+	\end{itemize}
+\end{anotherTpiSection}
+	
+% inventaire logiciels
+\begin{anotherTpiSection}{Inventaire des logiciels}
+	\begin{itemize}
+		\item \emph{Visual Studio 2013 Professionnal}
+	\end{itemize}
+\end{anotherTpiSection}
+
+% délivrables
+\begin{anotherTpiSection}{Délivrables (documents à restituer)}
+	\begin{itemize}
+		\item 1 carnet de bord
+		\item 1 exemplaire papier de la documentation technique
+		\item 1 exemplaire papier du mode d'emploi
+		\item 1 CD contenant les sources (projet logiciel)
+		\item mis à part le carnet de bord, tous les documents seront également restitués sur le serveur \emph{Moodle}
+	\end{itemize}
+\end{anotherTpiSection}
+
+% élements mesurables
+\begin{anotherTpiSection}{Éléments mesurables (servant à l'évaluation)}
+Réalisation des objectifs, mesurés selon la grille d'évaluation.
+\end{anotherTpiSection}
+
+% signatures
+\begin{anotherTpiSection}{Signatures}
+\begin{tabular}{p{8cm}p{4cm}}
+Date~: 19/11/2013 & Date~: 19/11/2013\tabularnewline[1cm]
+Candidat~: & Enseignant~: \tabularnewline[1cm]
+\end{tabular}
+\end{anotherTpiSection}
+
+\end{document}

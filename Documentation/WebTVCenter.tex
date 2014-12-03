@@ -1,0 +1,89 @@
+\documentclass[french]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage{babel}
+\usepackage{fancyhdr}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{bottom=3cm, top=3cm}
+\hypersetup{colorlinks=true}
+
+
+
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+\def\maketitle{%
+  \null
+  \thispagestyle{empty}%
+  \vskip 1cm
+  \begin{center}
+    \Huge \strut \@title \par
+    \large \strut Travail de semestre
+  \end{center}
+  \ifhmode\par\fi
+  \hbox to \hsize{\hfill
+    \vrule height 2pt width.5\hsize
+    \hfill}%
+  \begin{center}
+  	\normalfont\large CFPT Informatique\par
+    \normalfont\large\@author\par
+    \normalfont T.IS-E2A
+  \end{center}
+%IMG A METTRE ICI
+  \begin{center}
+    \normalfont\large 2014
+  \end{center}
+  \par
+  \vfil
+  \vfil
+  \null
+  \cleardoublepage
+  }
+
+
+
+\makeatother
+
+\title{Web TV Center}
+\author{Jean-Philippe Froelicher}
+\date{}
+
+\pagestyle{fancy}
+\lhead{Web TV Center}
+\lfoot{Jean-Philippe Froelicher}
+\rfoot{\today}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\begin{document}
+
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+\part{Introduction}
+\section{Web TV}
+Une Web TV est un site regroupant plusieurs chaine TV. Une chaine TV est un stream. Une Web TV est un ensemble de chaine qui 
+\section{Twitch}
+
+\newpage
+\part{Cahier des charges}
+\newpage
+\part{Étude d'opportunité}
+\section{Introduction au sujet}
+
+\part{Analyse fonctionnelle}
+
+\part{Analyse organique}
+
+\part{Tests}
+
+\part{Conclusion}
+
+\part{Glossaire}
+
+
+\part{Annexes}
+\end{document}

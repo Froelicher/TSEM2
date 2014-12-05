@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  3 DEC 2014 11:08
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  5 DEC 2014 15:09
 entering extended mode
 **Enonce_TSEM2.tex
 
@@ -801,6 +801,8 @@ Overfull \hbox (4.51958pt too wide) in paragraph at lines 148--174
 
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 183.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 183.
 
 Underfull \hbox (badness 10000) in paragraph at lines 189--197
 
@@ -832,12 +834,23 @@ M2/Documentation/template_enonce_TPI/images/Post-Tenebras-Lux.jpg>] [2 <C:/User
 s/admintech/Documents/GitHub/TSEM2/Documentation/template_enonce_TPI/images/sch
 emaWebTV.png> <C:/Users/admintech/Documents/GitHub/TSEM2/Documentation/template
 _enonce_TPI/images/schemaTwitch.png>]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 248.
-Package mdframed Info: Not enough space on this page on input line 274.
- [3]
-Package mdframed Info: Not enough space on this page on input line 274.
- 
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last box will be empty
+(mdframed)                you have to change it manually
+(mdframed)                by changing the text, the space
+(mdframed)                or something else on input line 266.
+
+Package mdframed Info: You first box width is to small
+ mdframed fixed it
+(mdframed)              on input line 266.
+[3]
+
+Package mdframed Warning: You got a bad break
+(mdframed)                because the last split box is empty
+(mdframed)                You have to change the settings on input line 266.
+
+
 AED: lastpage setting LastPage
 [4]
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\template_enonce_TPI\En
@@ -861,7 +874,7 @@ Users/admintech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/programs/Mi
 KTeX_2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/admintech/Documents/USBT
 eX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.9/fonts/type1/urw/helve
 tic/uhvro8a.pfb>
-Output written on Enonce_TSEM2.pdf (4 pages, 95595 bytes).
+Output written on Enonce_TSEM2.pdf (4 pages, 96235 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

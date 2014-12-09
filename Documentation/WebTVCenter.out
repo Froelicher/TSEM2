@@ -1,12 +1,21 @@
-\BOOKMARK [0][-]{part.1}{I Introduction}{}% 1
-\BOOKMARK [1][-]{section.1}{Web TV}{part.1}% 2
-\BOOKMARK [1][-]{section.2}{Twitch}{part.1}% 3
-\BOOKMARK [0][-]{part.2}{II Cahier des charges}{}% 4
-\BOOKMARK [0][-]{part.3}{III \311tude d'opportunit\351}{}% 5
-\BOOKMARK [1][-]{section.3}{Introduction au sujet}{part.3}% 6
-\BOOKMARK [0][-]{part.4}{IV Analyse fonctionnelle}{}% 7
-\BOOKMARK [0][-]{part.5}{V Analyse organique}{}% 8
-\BOOKMARK [0][-]{part.6}{VI Tests}{}% 9
-\BOOKMARK [0][-]{part.7}{VII Conclusion}{}% 10
-\BOOKMARK [0][-]{part.8}{VIII Glossaire}{}% 11
-\BOOKMARK [0][-]{part.9}{IX Annexes}{}% 12
+\BOOKMARK [0][-]{part.1}{I Cahier des charges}{}% 1
+\BOOKMARK [1][-]{section.1}{Initial}{part.1}% 2
+\BOOKMARK [2][-]{subsection.1.1}{Titre du projet}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.2}{Objectifs du projet}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.3}{Description du projet}{section.1}% 5
+\BOOKMARK [0][-]{part.2}{II \311tude d'opportunit\351}{}% 6
+\BOOKMARK [1][-]{section.2}{Introduction au projet}{part.2}% 7
+\BOOKMARK [2][-]{subsection.2.1}{Web TV}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.2}{Twitch}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.3}{Pourquoi avoir choisi ce sujet ?}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Pourquoi une application de bureau ?}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.5}{Pourquoi C\043?}{section.2}% 12
+\BOOKMARK [1][-]{section.3}{Analyse de l'existant}{part.2}% 13
+\BOOKMARK [2][-]{subsection.3.1}{Existant}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{Critique de l'existant}{section.3}% 15
+\BOOKMARK [1][-]{section.4}{Analyse fonctionnelle}{part.2}% 16
+\BOOKMARK [1][-]{section.5}{Analyse organique}{part.2}% 17
+\BOOKMARK [1][-]{section.6}{Tests}{part.2}% 18
+\BOOKMARK [1][-]{section.7}{Conclusion}{part.2}% 19
+\BOOKMARK [1][-]{section.8}{Glossaire}{part.2}% 20
+\BOOKMARK [1][-]{section.9}{Annexes}{part.2}% 21

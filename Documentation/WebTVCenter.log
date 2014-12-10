@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  9 DEC 2014 16:10
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  10 DEC 2014 10:10
 entering extended mode
 **WebTVCenter.tex
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\WebTVCenter.tex
@@ -488,20 +488,27 @@ File: img/schemaTwitch.png Graphic file (type png)
 
 <use img/schemaTwitch.png> [4 <C:/Users/admintech/Documents/GitHub/TSEM2/Docume
 ntation/img/schemaTwitch.png>] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 163.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 166.
  [6]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 163.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 166.
 
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\WebTVCenter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 163.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 163.
-Package rerunfilecheck Info: File `WebTVCenter.out' has not changed.
-(rerunfilecheck)             Checksum: 58A1F759ED87B83A6AB1858FB8232AD1;1303.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 163.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 166.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 166.
+
+
+Package rerunfilecheck Warning: File `WebTVCenter.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `WebTVCenter.out':
+(rerunfilecheck)             Before: 58A1F759ED87B83A6AB1858FB8232AD1;1303
+(rerunfilecheck)             After:  0EF28B087770E8B2F82FD45F313CCE77;1437.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 166.
  ) 
 Here is how much of TeX's memory you used:
- 6460 strings out of 494019
- 101110 string characters out of 3128541
+ 6462 strings out of 494019
+ 101138 string characters out of 3128541
  184541 words of memory out of 3000000
  9640 multiletter control sequences out of 15000+200000
  46693 words of font info for 35 fonts, out of 3000000 for 9000
@@ -520,9 +527,9 @@ dmintech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.
 tudio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.9/fonts/type1/public/lm/lmri10.pfb
 ><C:/Users/admintech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/progra
 ms/MiKTeX_2.9/fonts/type1/public/lm/lmro10.pfb>
-Output written on WebTVCenter.pdf (6 pages, 238575 bytes).
+Output written on WebTVCenter.pdf (6 pages, 239221 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
- 29 named destinations out of 1000 (max. 500000)
+ 180 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
  179 words of extra memory for PDF output out of 10000 (max. 10000000)
 

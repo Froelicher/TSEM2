@@ -67,42 +67,36 @@
 \part{Cahier des charges}
 \section{Initial}
 \subsection{Titre du projet}
-Web Tv Center
+Twitch notification
 \subsection{Objectifs du projet}
-Créer une application de notification(alerte) pour les \textbf{WEB TV} et la plateforme de \textit{streaming} \textbf{TWITCH}. \\
-Apprentissage et prise en main de l'API Twitch et Dailymotion.
+Créer une application de notification(alerte) pour la plateforme de diffusion de \textit{streaming} \textbf{TWITCH}. \\
+Apprentissage et prise en main de l'API Twitch.
 \subsection{Description du projet}
+
+\noindent
 \textbf{Glossaire :} \\
 STREAM(n.m) : Flux vidéo.\\
 STREAMER(v.) : L'action de diffuser du flux vidéo.\\
 STREAMING(n.m) : Diffusion de vidéos en continu.\\
 STREAMEUR(n.m) : Personne diffusant une vidéo en continu.\\
-WEB TV(n.f) : Structure regroupant une ou plusieurs chaines TV. Une chaine TV est un flux vidéo continu. Une Web TV est un ensemble de chaine qui fonctionne comme une chaine de télévision normale. Il y a des créneaux horaires pour chaque streameurs. Chaque Web TV emploie des streameurs qu'elles payent comme des employés.  \\
-ÉMISSION(n.f) : Activité quelconque(gameplay de jeux vidéo, émission plateau ...), un streameur peut avoir plusieurs émission. \\
 TWITCH : Site permettant à n'importe qui de diffuser du flux vidéo, chaque utilisateur a une chaine Twitch permettant de diffuser du flux vidéo. \\
+CHAINE TWITCH : Un utilisateur Twitch a forcément une chaine Twitch qu'il utilise que lorsqu'il diffuse du flux vidéo.
 
-Les WEB TV n'utilisent pas toutes les même plateforme de streaming pour leurs TV, il y en a deux, Twitch et Dailymotion.
-
+\noindent
+\textbf{Général :} \\
+Une vue principale qui permet de configurer les différentes notifications et alertes pour chaque flux vidéo (stream). \\
+L'application tourne en tâche de fond, c'est-à-dire qu'une icône apparait dans la barre de tâche lorsque l'on réduit la fenêtre de l'application. Pour y accéder on clique sur l'icône de la barre de tâche.\\
+Une notification est représenté sous forme de pop-up(petite fenêtre) qui apparait en bas à droite de l'écran principal, un petit son est accompagné si l'utilisateur ne voit pas la pop-up.
+\newpage
 \begin{center}
-\textbf{Web TV}
-
-\includegraphics[scale=0.7]{img/schemaWebTV.png}
-
-\begin{itemize}
-\item Lorsqu'un streameur commence une émission, mon application notifie l'utilisateur en indiquant qu'une émission a commencé sur un des streams.
-\item Si une émission est en cours, mon application permet de la regarder.
-\item Lorsqu'une Web TV commence à diffuser un flux sur une chaine TV, mon application notifie l'utilisateur.
-\item Gestion des notifications pour chaque Web TV.
-\end{itemize}
-
-
 \textbf{Twitch}
 
 \includegraphics[scale=0.8]{img/schemaTwitch.png}
 \begin{itemize}
-\item La plateforme Twitch permet de suivre des streameur "indépendant", actuellement, lorsqu'un streameurs commence son stream, une notification est envoyée par e-mail. Le but est de pouvoir saisir le nom Twitch du streameur, et lorsque il commence son stream, mon application notifie l'utilisateur.
+\item La plateforme Twitch permet de suivre des streameurs "indépendant", actuellement, lorsqu'un streameur commence son stream, une notification est envoyée par e-mail. Le but est de pouvoir saisir le nom Twitch du streameur, et lorsque il commence son stream, mon application notifie l'utilisateur.
 \item Pouvoir regarder le stream d'un utilisateur Twitch.
 \item Gestion des notification pour chaque chaine Twitch.
+\item Gestion des plages horaires de notifications pour chaque chaine Twitch
 \end{itemize}
 
 \textbf{Bonus}
@@ -112,21 +106,21 @@ Pouvoir rentrer le nom d'une chaine sur Youtube et lorsque celle-ci sort une vid
 \newpage
 \part{Étude d'opportunité}
 \section{Introduction au projet}
-Le but de ce projet est de réaliser une application de notification pour les Web TV et la plateforme de streaming Twitch, l'application sera décomposée en deux parties, la première partie est la gestion des notifications pour les Web TV, la deuxième est la gestion des notifications pour la plateforme Twitch.
-Il y a également la possibilité de visionner les différents flux vidéos de chaque Web TV et chaque chaine Twitch. C'est une application de bureau.
-
-\subsection{Web TV}
-Une Web TV est la diffusion de flux vidéo par une interface Web, ce qui permet aux internautes de regarder du contenu vidéo à partir d'un navigateur Web ou depuis une application mobile.\\
-Dans notre cas, une Web TV est une structure regroupant plusieurs chaine TV qui diffusent du flux vidéo en continu. Pour animer le contenu d'une chaine TV, les Web TV emploient des streameurs, ses personnes ont des horaires journaliers sur la chaine, comme une chaine de télévision normale.
-Une Web TV offre également aux streameurs n'ayant pas la possibilité de se déplacer dans les locaux des Web TV d'avoir une chaine TV affiliée à se streameur.
+Le but de ce projet est de réaliser une application de notification pour la plateforme de diffusion de streaming Twitch ainsi que toute la gestion de ses notifications.
 
 \subsection{Twitch}
-Twitch est une plateforme de streaming et de VOD[REF A METTRE] de jeux vidéo, c'est la plateforme numéro un pour les amateurs de streaming, toutes personnes voulant commencer dans se monde est obligé de passer par Twitch.
-La plateforme donne la possibilité de pouvoir envoyer du flux vidéo sur la chaine Twitch de l'utilisateur en question.
-
+Twitch est une plateforme de diffusion de streaming et de VOD[REF A METTRE] de jeux vidéo créée en 2011.
+C'est la plateforme numéro un pour les amateurs de streaming, toutes personnes voulant commencer dans se monde est quasiment obligé de passer par Twitch.\\
+La plateforme donne la possibilité de pouvoir transmettre du flux vidéo sur la chaine Twitch de l'utilisateur en question.\\
+Les différents critères qui compose un stream :
+\begin{itemize}
+\item L'intituler du stream
+\item Langue de diffusion
+\item Jeux sur lequel le streameur joue
+\end{itemize}
 
 \subsection{Pourquoi avoir choisi ce sujet ?}
-J'ai choisi ce sujet parce que je porte un réel intérêt au monde du streaming. En effet, je regarde régulièrement des streams sur des Web Tv ou sur une chaine de la plateforme Twitch. N'étant jamais au courant de quel streameur stream à moment donné, j'ai donc pensé à une application qui notifie et informe l'utilisateur des différents streams en cours.
+J'ai choisi ce sujet parce que je porte un réel intérêt au monde du streaming. En effet, je regarde régulièrement des streams sur des chaines de la plateforme de streaming Twitch. N'étant jamais au courant de quel streameur est en train de diffuser à moment donné, j'ai donc pensé à une application qui notifie et informe l'utilisateur des différents streams en cours.
 \subsection{Pourquoi une application de bureau ?}
 Au départ, je voulais créer une application mobile, ce qui augmente l'intérêt du programme mais, le temps laissé à disposition n'est pas assez conséquent et donc étant novice dans la programmation mobile j'ai décidé de créer une application de bureau que je pourrai peut-être porter plus tard sur mobile.
 \subsection{Pourquoi C\#?}
@@ -136,22 +130,22 @@ J'ai choisi de développer mon application en C\# car c'est le langage que je con
 \subsection{Existant}
 Étant donner que le streaming est un monde nouveau il y a peu d'application sur ce sujet, en effet les seules applications sont :
 \begin{itemize}
-\item \textbf{Eclypsia} : Application mobile officielle de la Web TV Eclypsia
-\item \textbf{Millenium TV} : Application mobile non-officielle de la Web TV Millénium
-\item \textbf{Gaming Live} : Application mobile non-officielle de la Web TV Gaming Live
 \item \textbf{Twitch} : Application mobile officielle de la plateforme de streaming Twitch
+\item \textbf{Twitch now} : Application Google Chrome
+\item \textbf{Twitch Notifier} : Application Google Chrome
 \end{itemize}
 \subsection{Critique de l'existant}
 \noindent
-\textbf{Eclypsia} : Cette application sert à visionner les deux chaines TV de la Web TV Eclypsia, elle n'a pas vraiment d'avantage à part le fait qu'en dessous des deux lecteurs vidéos, il y a le planning journalier de la TV.\\
-\textbf{Millenium TV} : Cette application est similaire à celle d'Eclypsia mais pour la Web TV Millénium, le plus de cette application est que le chat IRC est disponible en dessous des différents lecteurs vidéos.\\
-\textbf{Gaming Live} : Cette application est certainement la plus complète, elle affiche la liste des chaines TV avec le nombre de spectateurs ainsi que l'état de la chaine TV (en ligne ou hors ligne). Le chat IRC est également disponible lorsque un utilisateur regarde une des chaines TV.\\
-\textbf{Twitch} : Cette application sert à accéder à la plateforme de streaming twitch. En effet, c'est l'application officielle, il y a donc la possibilité de visionner n'importe quelles chaines Twitch, la possibilité de se connecter à la plateforme pour avoir toutes les chaines que l'utilisateur suit.
+\textbf{Twitch} : Cette application sert à accéder à la plateforme de streaming twitch. En effet, c'est l'application officielle, il y a donc la possibilité de visionner n'importe quelles chaines Twitch, la possibilité de se connecter à la plateforme pour voir toutes les chaines que l'utilisateur suit.
+\textbf{Twitch now} : Cette application permet à l'utilisateur de naviguer dans les différents streams de Twitch, c'est une application Google Chrome de Twitch, elle permet de naviguer dans Twitch sans aller sur le site. Le système de suivi est celui de Twitch, c'est-à-dire que lorsque dans l'application on suit une chaine Twitch, dans le compte Twitch de l'utilisateur la chaine s'ajoute également dans la liste de suivi. \\
+\textbf{Twitch notifier} : Cette application permet à l'utilisateur d'être notifié lorsqu'un stream commence. C'est une application pour Google Chrome donc pas très pratique si l'utilisateur n'utilise pas Google Chrome. C'est une application qui s'approche beaucoup de celle que je réalise car on peut saisir, dans l'application, la chaine Twitch d'un streameur et lorsque se streameur commence à streamer, une notification s'affiche sous forme de pop-up.\\
+La lecture des flux vidéos se fait directement sur le site Twitch.
 
 \section{Analyse fonctionnelle}
-\subsection{API Twitch}
+\subsection{API Twitch (Twitch.Net)}
+L'API Twitch sert à récupérer les différentes informations d'un flux vidéo sur Twitch.
+L'API est composé en plusieurs parties
 
-\subsection{Shockwave Flash Object}
 
 \section{Analyse organique}
 

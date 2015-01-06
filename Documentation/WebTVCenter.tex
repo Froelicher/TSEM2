@@ -47,12 +47,12 @@
 
 \makeatother
 
-\title{Web TV Center}
+\title{Twitch Alert}
 \author{Jean-Philippe Froelicher}
 \date{}
 
 \pagestyle{fancy}
-\lhead{Web TV Center}
+\lhead{Twitch Alert}
 \lfoot{Jean-Philippe Froelicher}
 \rfoot{\today}
 \renewcommand{\footrulewidth}{0.4pt}
@@ -111,13 +111,13 @@ Le but de ce projet est de réaliser une application de notification pour la plat
 \subsection{Twitch}
 Twitch est une plateforme de diffusion de streaming et de VOD[REF A METTRE] de jeux vidéo créée en 2011.
 C'est la plateforme numéro un pour les amateurs de streaming, toutes personnes voulant commencer dans se monde est quasiment obligé de passer par Twitch.\\
-La plateforme donne la possibilité de pouvoir transmettre du flux vidéo sur la chaine Twitch de l'utilisateur en question.\\
-Les différents critères qui compose un stream :
-\begin{itemize}
-\item L'intituler du stream
-\item Langue de diffusion
-\item Jeux sur lequel le streameur joue
-\end{itemize}
+La plateforme donne la possibilité de pouvoir transmettre du flux vidéo sur la chaine Twitch de l'utilisateur en question.
+\subsubsection{Chaine}
+Une chaine Twitch offre une multitude de possibilité pour l'utilisateur spectateur, effectivement une chaine n'est pas simplement un flux vidéo.
+Il y a la fonction "Suivre" une chaine Twitch, qui permet aux spectateurs de pouvoir être tenu au courant via e-mail mais aussi d'accéder plus rapidement à la chaine en question.
+Il y a également une fonction "S'abonné" qui est payante, le prix varie selon la chaine. En revanche, cette fonction offre quelques avantages pas très significatif car l'abonnement sert surtout à soutenir financièrement directement la chaine Twitch.
+\subsubsection{Team}
+Une team Twitch est un groupe de chaine Twitch, la notion de team permet uniquement de retrouver les différentes chaines d'un groupe de streaming, ou d'une team professionnel de jeu etc...
 
 \subsection{Pourquoi avoir choisi ce sujet ?}
 J'ai choisi ce sujet parce que je porte un réel intérêt au monde du streaming. En effet, je regarde régulièrement des streams sur des chaines de la plateforme de streaming Twitch. N'étant jamais au courant de quel streameur est en train de diffuser à moment donné, j'ai donc pensé à une application qui notifie et informe l'utilisateur des différents streams en cours.
@@ -143,9 +143,41 @@ La lecture des flux vidéos se fait directement sur le site Twitch.
 
 \section{Analyse fonctionnelle}
 \subsection{API Twitch (Twitch.Net)}
-L'API Twitch sert à récupérer les différentes informations d'un flux vidéo sur Twitch.
-L'API est composé en plusieurs parties
+L'API Twitch sert à récupérer les différentes informations d'un flux vidéo sur Twitch. Elle utilise un lien URL pour retrouver toutes les informations d'un stream : \begin{center}https://api.twitch.tv/kraken/channels/[nom de la chaine twitch]\end{center}
+Toutes les informations que l'API appel se fait depuis cette page qui est formaté en JSON.
 
+L'API est composé de cette manière :
+\begin{itemize}
+\item Channels : Informations concernant une chaine Twitch
+\item Chat : Informations concernant le chat de la chaine Twitch
+\item Follows : Informations concernant les "suiveurs" de la chaine Twitch
+\item Games : Informations concernant le jeu en cours sur la chaine Twitch
+\item Search : Recherche des streams et des jeux
+\item Streams : Informations concernant le stream
+\item Subscriptions : Informations concernant les abonnements de la chaine Twitch
+\item Teams : Informations concernant une team sur Twitch
+\item Users : Informations concernant un utilisateur
+\item Videos : Informations concernant les vidéos de la chaine Twitchs
+
+\end{itemize}
+
+\subsection{Gestion des chaines}
+La gestion des chaines à pour but de gérer les différentes chaine. Elle se compose comme ceci : Liste des streams en ligne et hors-ligne, détail d'une chaine Twitch.\\
+La liste des streams en ligne affiche les streams que l'utilisateur suit et qui sont actuellement en ligne, la liste des stream hors-ligne affiche les streams que l'utilisateur suit et qui sont actuellement hors-ligne. Les différentes options de configuration sur chaque stream est accessible depuis ces liste. \\
+Le détail d'une chaine Twitch consiste à afficher toutes les informations concernant une chaine Twitch, en effet, c'est depuis là que l'utilisateur peut visualiser le stream de la chaine, également la possibilité d'afficher le chat de la chaine, toutes les fonctions de bases de Twitch pour une chaine est repris ici.
+
+\subsection{Recherche d'une chaine}
+Il y a différente manière de rechercher une chaine sur Twitch :
+\begin{itemize}
+\item Recherche par nom de chaine
+\item Recherche par jeux
+\item Recherche par popularité
+\end{itemize}
+L'application reprend les mêmes filtres que le site Twitch.
+
+
+\subsection{Gestion des notifications}
+La gestion des notifications à pour but de gérer les notifications lorsqu'un stream démarre.
 
 \section{Analyse organique}
 

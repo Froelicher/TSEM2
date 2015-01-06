@@ -6,16 +6,19 @@
 \BOOKMARK [0][-]{part.2}{II \311tude d'opportunit\351}{}% 6
 \BOOKMARK [1][-]{section.2}{Introduction au projet}{part.2}% 7
 \BOOKMARK [2][-]{subsection.2.1}{Twitch}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.2}{Pourquoi avoir choisi ce sujet ?}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.3}{Pourquoi une application de bureau ?}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.4}{Pourquoi C\043?}{section.2}% 11
-\BOOKMARK [1][-]{section.3}{Analyse de l'existant}{part.2}% 12
-\BOOKMARK [2][-]{subsection.3.1}{Existant}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.2}{Critique de l'existant}{section.3}% 14
-\BOOKMARK [1][-]{section.4}{Analyse fonctionnelle}{part.2}% 15
-\BOOKMARK [2][-]{subsection.4.1}{API Twitch \(Twitch.Net\)}{section.4}% 16
-\BOOKMARK [1][-]{section.5}{Analyse organique}{part.2}% 17
-\BOOKMARK [1][-]{section.6}{Tests}{part.2}% 18
-\BOOKMARK [1][-]{section.7}{Conclusion}{part.2}% 19
-\BOOKMARK [1][-]{section.8}{Glossaire}{part.2}% 20
-\BOOKMARK [1][-]{section.9}{Annexes}{part.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Chaine}{subsection.2.1}% 9
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Team}{subsection.2.1}% 10
+\BOOKMARK [2][-]{subsection.2.2}{Pourquoi avoir choisi ce sujet ?}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Pourquoi une application de bureau ?}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.4}{Pourquoi C\043?}{section.2}% 13
+\BOOKMARK [1][-]{section.3}{Analyse de l'existant}{part.2}% 14
+\BOOKMARK [2][-]{subsection.3.1}{Existant}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.2}{Critique de l'existant}{section.3}% 16
+\BOOKMARK [1][-]{section.4}{Analyse fonctionnelle}{part.2}% 17
+\BOOKMARK [2][-]{subsection.4.1}{API Twitch \(Twitch.Net\)}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.2}{Gestion des chaines}{section.4}% 19
+\BOOKMARK [1][-]{section.5}{Analyse organique}{part.2}% 20
+\BOOKMARK [1][-]{section.6}{Tests}{part.2}% 21
+\BOOKMARK [1][-]{section.7}{Conclusion}{part.2}% 22
+\BOOKMARK [1][-]{section.8}{Glossaire}{part.2}% 23
+\BOOKMARK [1][-]{section.9}{Annexes}{part.2}% 24

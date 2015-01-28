@@ -8,6 +8,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{pgfgantt}
 \geometry{bottom=3cm, top=3cm}
 \hypersetup{colorlinks=true}
 
@@ -158,8 +159,11 @@ L'API est composé de cette manière :
 \item Teams : Informations concernant une team sur Twitch
 \item Users : Informations concernant un utilisateur
 \item Videos : Informations concernant les vidéos de la chaine Twitchs
-
 \end{itemize}
+
+\subsubsection{REST}
+\subsubsection{Autofac}
+\subsubsection{JSON}
 
 \subsection{Gestion des chaines}
 La gestion des chaines à pour but de gérer les différentes chaine. Elle se compose comme ceci : Liste des streams en ligne et hors-ligne, détail d'une chaine Twitch.\\
@@ -175,10 +179,35 @@ Il y a différente manière de rechercher une chaine sur Twitch :
 \end{itemize}
 L'application reprend les mêmes filtres que le site Twitch.
 
+\subsection{Ajout d'une chaine}
+L'ajour d'une chaine Twitch se fait directement depuis le détail d'une chaine ou depuis les résultats d'une recherche.
 
 \subsection{Gestion des notifications}
-La gestion des notifications à pour but de gérer les notifications lorsqu'un stream démarre.
+La gestion des notifications à pour but de gérer les notifications d'un stream lorsqu'il démarre.  
 
+\subsection{Interface homme-machine}
+\subsubsection{Vue principale}
+La vue principale permet à l'utilisateur connecté à Twitch de s'informer des différents streams en cours. Elle permet également de rechercher une chaine Twitch pour la regarder ou pour la suivre.
+C'est depuis cette vue que l'on peut accéder à la configuration des notifications de chaque chaine suivis.
+\begin{center}
+\includegraphics[scale=0.6]{img/vueprincipaletwitch.png}
+\end{center}
+\begin{enumerate}
+\item Affiche les suivis du comptes Twitch actuellement connecté
+\item Affiche les streams populaire actuel de Twitch
+\item Permet de se connecter à Twitch
+\end{enumerate}
+
+\begin{center}
+\includegraphics[scale=0.6]{img/vueprincipalestream.png}
+\end{center}
+\begin{enumerate}
+\item Paramètre sur lequel la recherche va être effectuée
+\item Information concernant le stream
+\item Champ de saisie pour la recherche
+\item Bouton pour accéder à la configuration de la chaine
+\item Bouton pour lire le stream depuis l'application
+\end{enumerate}
 \section{Analyse organique}
 
 \section{Tests}
@@ -189,4 +218,58 @@ La gestion des notifications à pour but de gérer les notifications lorsqu'un str
 
 
 \section{Annexes}
+\subsection{Planification}
+\subsubsection{Planification prévisionnelle}
+\begin{ganttchart}[hgrid,vgrid,x unit=8mm,y unit chart=6mm,group left shift=0,group right shift=0,group peaks tip position=0,group peaks height=.4]{1}{14}
+\gantttitle{\textbf{2014}}{4}
+\gantttitle{\textbf{2015}}{10}\ganttnewline
+\gantttitle{\textbf{Décembre}}{3}
+\gantttitle{\textbf{Janvier}}{4}
+\gantttitle{\textbf{Février}}{3}
+\gantttitle{\textbf{Mars}}{4}\ganttnewline
+\gantttitlelist{3,9,17,6,14,21,28,4,18,25,4,10,18,25}{1}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Cahier des charges}{1}{1}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Recherche}{2}{7}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Analyse fonctionnelle}{2}{6}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Analyse organique}{6}{8}
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{}{8}{9}\ganttnewline
+\ganttmilestone{Rapport intermédiaire}{7}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{Développement}{8}{12}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{Test+Rapport}{11}{12}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Documentation}{1}{8}
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{}{8}{12}\ganttnewline
+\ganttmilestone{Rapport final}{13}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{Présentation}{13}{14}
+\ganttlink{elem4}{elem5}
+\ganttlink{elem5}{elem6}
+\ganttlink{elem9}{elem10}
+\ganttlink{elem10}{elem11}
+\end{ganttchart}
+
+\subsubsection{Planning réel}
+\begin{ganttchart}[hgrid,vgrid,x unit=8mm,y unit chart=6mm,group left shift=0,group right shift=0,group peaks tip position=0,group peaks height=.4]{1}{14}
+\gantttitle{\textbf{2014}}{4}
+\gantttitle{\textbf{2015}}{10}\ganttnewline
+\gantttitle{\textbf{Décembre}}{3}
+\gantttitle{\textbf{Janvier}}{4}
+\gantttitle{\textbf{Février}}{3}
+\gantttitle{\textbf{Mars}}{4}\ganttnewline
+\gantttitlelist{3,9,17,6,14,21,28,4,18,25,4,10,18,25}{1}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Cahier des charges}{1}{1}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Recherche}{2}{7}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Analyse fonctionnelle}{2}{6}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Analyse organique}{6}{8}
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{}{8}{9}\ganttnewline
+\ganttmilestone{Rapport intermédiaire}{7}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{Développement}{8}{12}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{Test+Rapport}{11}{12}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=green}]{Documentation}{1}{8}
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{}{8}{12}\ganttnewline
+\ganttmilestone{Rapport final}{13}\ganttnewline
+\ganttbar[bar height=.6, bar top shift=.2, bar/.append style={fill=red}]{Présentation}{13}{14}
+\ganttlink{elem4}{elem5}
+\ganttlink{elem5}{elem6}
+\ganttlink{elem9}{elem10}
+\ganttlink{elem10}{elem11}
+\end{ganttchart}
 \end{document}

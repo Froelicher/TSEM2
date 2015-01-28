@@ -1,0 +1,10 @@
+{"display_name":"OgamingLoL",
+"_id":71852533,
+"name":"ogaminglol",
+"type":"user",
+"bio":"La chaîne O'Gaming 100% League of Legends !",
+"created_at":"2014-09-24T14:59:47Z",
+"updated_at":"2015-01-28T10:15:42Z",
+"logo":"http://static-cdn.jtvnw.net/jtv_user_pictures/ogaminglol-profile_image-8871bc8519315c6a-300x300.jpeg",
+"_links":
+	{"self":"https://api.twitch.tv/kraken/users/ogaminglol"}}

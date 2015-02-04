@@ -8,15 +8,18 @@ using System.Threading.Tasks;
 namespace TwitchAlert.TwitchModels
 {
     [DataContract]
-    class Streams
+    class Preview
     {
         [DataMember]
-        public string self { get; set; }
+        public string small { get; set; }
 
         [DataMember]
-        public string channel { get; set; }
+        public string medium { get; set; }
 
         [DataMember]
-        public Stream stream { get; set; }
+        public string large { get; set; }
+
+        [DataMember]
+        public string template { get; set; }
     }
 }

@@ -71,7 +71,7 @@ namespace TwitchAlert.TwitchModels
         public int followers { get; set; }*/
 
         [DataMember]
-        public string[] _links { get; set; }
+        public Dictionary<string, string> _links { get; set; }
         
         /*
         [DataMember]

@@ -11,6 +11,9 @@ namespace TwitchAlert.TwitchModels
     class Streams
     {
         [DataMember]
+        public Dictionary<string, string> _links { get; set; }
+
+        [DataMember]
         public string self { get; set; }
 
         [DataMember]

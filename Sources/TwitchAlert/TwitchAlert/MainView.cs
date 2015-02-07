@@ -23,6 +23,7 @@ namespace TwitchAlert
             WebClient strJson = new WebClient();
             string test = strJson.DownloadString("https://api.twitch.tv/kraken/streams/ogaminglol");
             DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Streams));
+            
             MemoryStream ms = new MemoryStream(System.Text.ASCIIEncoding.ASCII.GetBytes(test));
 
             Streams fireBall = (Streams)js.ReadObject(ms);

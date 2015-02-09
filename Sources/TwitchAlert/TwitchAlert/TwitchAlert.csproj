@@ -51,6 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlStreams.cs" />
+    <Compile Include="JsonSerializer.cs" />
     <Compile Include="MainView.cs">
       <SubType>Form</SubType>
     </Compile>

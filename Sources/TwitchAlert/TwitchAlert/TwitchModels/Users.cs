@@ -8,34 +8,40 @@ using System.Threading.Tasks;
 namespace TwitchAlert.TwitchModels
 {
     [DataContract]
-    class Stream
+    class Users
     {
         [DataMember]
-        public long _id { get; set; }
+        public string display_name { get; set; }
 
         [DataMember]
-        public string game { get; set; }
+        public string _id { get; set; }
 
         [DataMember]
-        public int viewers { get; set; }
+        public string name { get; set; }
+
+        [DataMember]
+        public string type { get; set; }
+
+        [DataMember]
+        public string bio { get; set; }
 
         [DataMember]
         public string created_at { get; set; }
 
         [DataMember]
-        public StreamLinks _links { get; set; }
+        public string updated_at { get; set; }
+
+        [DataMember]
+        public string logo { get; set; }
+
+        [DataMember]
+        public UsersLinks _links { get; set; }
 
         [DataContract]
-        public class StreamLinks
+        public class UsersLinks
         {
             [DataMember]
             public string self { get; set; }
         }
-        [DataMember]
-        public Image preview { get; set; }
-
-        [DataMember]
-        public Channel channel { get; set; }
-
     }
 }

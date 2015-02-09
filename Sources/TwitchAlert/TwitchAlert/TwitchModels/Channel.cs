@@ -7,7 +7,7 @@ namespace TwitchAlert.TwitchModels
     [DataContract]
     class Channel
     {
-        /*[DataMember]
+        [DataMember]
         public bool mature { get; set; }
 
         [DataMember]
@@ -68,37 +68,40 @@ namespace TwitchAlert.TwitchModels
         public int views { get; set; }
 
         [DataMember]
-        public int followers { get; set; }*/
+        public int followers { get; set; }
 
         [DataMember]
-        public Dictionary<string, string> _links { get; set; }
-        
-        /*
-        [DataMember]
-        public string follows { get; set; }
+        public ChannelLinks _links { get; set; }
 
-        [DataMember]
-        public string commercial { get; set; }
+        [DataContract]
+        public class ChannelLinks
+        {
+            [DataMember]
+            public string follows { get; set; }
 
-        [DataMember]
-        public string stream_key { get; set; }
+            [DataMember]
+            public string commercial { get; set; }
 
-        [DataMember]
-        public string chat { get; set; }
+            [DataMember]
+            public string stream_key { get; set; }
 
-        [DataMember]
-        public string features { get; set; }
+            [DataMember]
+            public string chat { get; set; }
 
-        [DataMember]
-        public string subscriptions { get; set; }
+            [DataMember]
+            public string features { get; set; }
 
-        [DataMember]
-        public string editors { get; set; }
+            [DataMember]
+            public string subscriptions { get; set; }
 
-        [DataMember]
-        public List<object> teams { get; set; }
+            [DataMember]
+            public string editors { get; set; }
 
-        [DataMember]
-        public string videos { get; set; }*/
+            [DataMember]
+            public string teams { get; set; }
+
+            [DataMember]
+            public string videos { get; set; }
+        }  
     }
 }

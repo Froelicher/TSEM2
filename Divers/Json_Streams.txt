@@ -1,6 +1,7 @@
 {"_links":
 	{"self":"https://api.twitch.tv/kraken/streams/ogaminglol",
-	"channel":"https://api.twitch.tv/kraken/channels/ogaminglol"},
+	"channel":"https://api.twitch.tv/kraken/channels/ogaminglol"
+	},
 	"stream":
 		{"_id":12863232896,
 		"game":"League of Legends",
@@ -24,7 +25,9 @@
 					"subscriptions":"https://api.twitch.tv/kraken/channels/ogaminglol/subscriptions",
 					"editors":"https://api.twitch.tv/kraken/channels/ogaminglol/editors",
 					"videos":"https://api.twitch.tv/kraken/channels/ogaminglol/videos",
-					"teams":"https://api.twitch.tv/kraken/channels/ogaminglol/teams"},
+					"teams":"https://api.twitch.tv/kraken/channels/ogaminglol/teams"
+				},
+					
 					"background":null,
 					"banner":null,
 					"broadcaster_language":"fr",

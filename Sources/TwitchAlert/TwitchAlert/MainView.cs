@@ -21,12 +21,12 @@ namespace TwitchAlert
             InitializeComponent();
 
             WebClient strJson = new WebClient();
-            string test = strJson.DownloadString("https://api.twitch.tv/kraken/streams/ogaminglol");
-            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(Streams));
+            string test = strJson.DownloadString("https://api.twitch.tv/kraken/search/games?q=star&type=suggest");
+            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(SearchGames));
             
             MemoryStream ms = new MemoryStream(System.Text.ASCIIEncoding.ASCII.GetBytes(test));
 
-            Streams fireBall = (Streams)js.ReadObject(ms);
+            SearchGames fireBall = (SearchGames)js.ReadObject(ms);
             //label1.Text = "Title : " + fireBall.game;
             ms.Close();
 

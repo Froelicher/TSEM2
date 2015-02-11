@@ -8,7 +8,7 @@ namespace TwitchAlert.TwitchModels
     class Channel
     {
         [DataMember]
-        public bool mature { get; set; }
+        public string mature { get; set; }
 
         [DataMember]
         public string status { get; set; }

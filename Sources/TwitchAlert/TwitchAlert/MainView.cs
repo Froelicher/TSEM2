@@ -19,6 +19,10 @@ namespace TwitchAlert
         public MainView()
         {
             InitializeComponent();
+            ControlStreams cs = new ControlStreams();
+            cs.ProfilTwitch = "grunghi";
+
+            cs.GetGamesSearch("star");
         }
     }
 }

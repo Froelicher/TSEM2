@@ -13,13 +13,6 @@ namespace TwitchAlert
 
         private JsonSerializer _js;
         private string _profilTwitch;
-        private List<Streams> _listStreams;
-
-        internal List<Streams> ListStreams
-        {
-            get { return _listStreams; }
-            set { _listStreams = value; }
-        }
 
         public string ProfilTwitch
         {

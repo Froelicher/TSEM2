@@ -24,5 +24,10 @@ namespace TwitchAlert
 
             cs.GetGamesSearch("star");
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

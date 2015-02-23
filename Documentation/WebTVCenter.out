@@ -18,10 +18,10 @@
 \BOOKMARK [1][-]{section.4}{Analyse fonctionnelle}{part.2}% 18
 \BOOKMARK [2][-]{subsection.4.1}{API Twitch \(Twitch.Net\)}{section.4}% 19
 \BOOKMARK [3][-]{subsubsection.4.1.1}{OAuth 2.0}{subsection.4.1}% 20
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Curl}{subsection.4.1}% 21
+\BOOKMARK [3][-]{subsubsection.4.1.2}{cURL}{subsection.4.1}% 21
 \BOOKMARK [2][-]{subsection.4.2}{Gestion des chaines}{section.4}% 22
 \BOOKMARK [2][-]{subsection.4.3}{Recherche d'une chaine}{section.4}% 23
-\BOOKMARK [2][-]{subsection.4.4}{Ajout d'une chaine}{section.4}% 24
+\BOOKMARK [2][-]{subsection.4.4}{Ajout d'une cha\356ne}{section.4}% 24
 \BOOKMARK [2][-]{subsection.4.5}{Gestion des notifications}{section.4}% 25
 \BOOKMARK [2][-]{subsection.4.6}{Interface homme-machine}{section.4}% 26
 \BOOKMARK [3][-]{subsubsection.4.6.1}{Vue principale}{subsection.4.6}% 27

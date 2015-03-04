@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  23 FEB 2015 15:52
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  3 MAR 2015 17:15
 entering extended mode
 **WebTVCenter.tex
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\WebTVCenter.tex
@@ -870,22 +870,22 @@ File: img/vueprincipalestream.png Graphic file (type png)
 <use img/vueprincipalestream.png> [9 <C:/Users/admintech/Documents/GitHub/TSEM2
 /Documentation/img/vueprincipaletwitch.png (PNG copy)> <C:/Users/admintech/Docu
 ments/GitHub/TSEM2/Documentation/img/vueprincipalestream.png (PNG copy)>]
-Overfull \hbox (18.07097pt too wide) in paragraph at lines 287--288
+Overfull \hbox (18.07097pt too wide) in paragraph at lines 289--290
 [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 315.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
 
-Overfull \hbox (18.07097pt too wide) in paragraph at lines 314--315
+Overfull \hbox (18.07097pt too wide) in paragraph at lines 316--317
 [][] 
  []
 
 [10] [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 315.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
 
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\WebTVCenter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 315.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 315.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
 
 
 Package rerunfilecheck Warning: File `WebTVCenter.out' has changed.
@@ -893,14 +893,14 @@ Package rerunfilecheck Warning: File `WebTVCenter.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `WebTVCenter.out':
-(rerunfilecheck)             Before: 7E8162A044B6676F2632D5F6FD946623;2343
-(rerunfilecheck)             After:  9520057172BEFFE561160EEF802DBFAF;2346.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 315.
+(rerunfilecheck)             Before: 9520057172BEFFE561160EEF802DBFAF;2346
+(rerunfilecheck)             After:  8D7DAEDA9000B129C21987EE5C6C939D;2470.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 317.
  ) 
 Here is how much of TeX's memory you used:
- 16500 strings out of 494019
- 321928 string characters out of 3128541
- 418137 words of memory out of 3000000
+ 16502 strings out of 494019
+ 321956 string characters out of 3128541
+ 418601 words of memory out of 3000000
  19410 multiletter control sequences out of 15000+200000
  62934 words of font info for 40 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
@@ -926,9 +926,9 @@ ublic/lm/lmri10.pfb><C:/Users/admintech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1
 .6_TeXstudio/programs/MiKTeX_2.9/fonts/type1/public/lm/lmri8.pfb><C:/Users/admi
 ntech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.9/f
 onts/type1/public/lm/lmro10.pfb>
-Output written on WebTVCenter.pdf (11 pages, 545327 bytes).
+Output written on WebTVCenter.pdf (11 pages, 545545 bytes).
 PDF statistics:
- 322 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
+ 324 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
  318 words of extra memory for PDF output out of 10000 (max. 10000000)
 

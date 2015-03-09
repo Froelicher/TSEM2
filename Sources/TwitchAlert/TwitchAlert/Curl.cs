@@ -16,13 +16,9 @@ namespace TwitchAlert
             JsonSerializer js = new JsonSerializer();
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(urlRequest);
             httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Accept = "*/*";
+            httpWebRequest.Accept = "application/vnd.twitchtv.v3+json";
             httpWebRequest.Method = p_method;
-            httpWebRequest.Headers.Add("Accept: application/vnd.twitchtv.v2+json");
-            if(p_method != "GET" || p_method != "POST")
-            {
-                httpWebRequest.Headers.Add("Authorization: OAuth "+p_acces_token);
-            }
+            httpWebRequest.Headers.Add("Authorization: OAuth "+p_acces_token);
 
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
 

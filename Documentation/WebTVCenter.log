@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  3 MAR 2015 17:15
+This is pdfTeX, Version 3.1415926-1.40.11 (MiKTeX 2.9) (preloaded format=pdflatex 2011.4.27)  9 MAR 2015 16:27
 entering extended mode
 **WebTVCenter.tex
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\WebTVCenter.tex
@@ -831,78 +831,80 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [2
 
-] [3] <img/schemaTwitch.png, id=206, 322.95656pt x 253.69781pt>
+] [3] <img/schemaTwitch.png, id=216, 322.95656pt x 253.69781pt>
 File: img/schemaTwitch.png Graphic file (type png)
 
 <use img/schemaTwitch.png> [4 <C:/Users/admintech/Documents/GitHub/TSEM2/Docume
-ntation/img/schemaTwitch.png>] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 164--166
+ntation/img/schemaTwitch.png>] [5] [6]
+<img/vueprincipaletwitch.png, id=234, 590.95781pt x 466.74374pt>
+File: img/vueprincipaletwitch.png Graphic file (type png)
+
+<use img/vueprincipaletwitch.png> [7]
+<img/vueprincipalestream.png, id=240, 538.26094pt x 457.71pt>
+File: img/vueprincipalestream.png Graphic file (type png)
+
+<use img/vueprincipalestream.png> [8 <C:/Users/admintech/Documents/GitHub/TSEM2
+/Documentation/img/vueprincipaletwitch.png (PNG copy)> <C:/Users/admintech/Docu
+ments/GitHub/TSEM2/Documentation/img/vueprincipalestream.png (PNG copy)>]
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 212--214
 
  []
 
-[6]
-Underfull \hbox (badness 10000) in paragraph at lines 175--178
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
+Underfull \hbox (badness 10000) in paragraph at lines 227--230
 
  []
 
-<img/SchemaOAuth2.png, id=226, 493.845pt x 409.53pt>
+<img/SchemaOAuth2.png, id=258, 493.845pt x 409.53pt>
 File: img/SchemaOAuth2.png Graphic file (type png)
 
-<use img/SchemaOAuth2.png> [7 <C:/Users/admintech/Documents/GitHub/TSEM2/Docume
-ntation/img/SchemaOAuth2.png>]
-<img/curlExample.png, id=237, 389.20406pt x 33.87656pt>
+<use img/SchemaOAuth2.png> [10]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 248.
+
+
+(C:\Users\admintech\Documents\USBTeX-1.6_TeXstudio\USBTeX-1.6_TeXstudio\program
+s\MiKTeX_2.9\tex\latex\lm\t1lmtt.fd
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+<img/curlExample.png, id=268, 389.20406pt x 33.87656pt>
 File: img/curlExample.png Graphic file (type png)
 
 <use img/curlExample.png>
-<img/vueprincipaletwitch.png, id=238, 590.95781pt x 466.74374pt>
-File: img/vueprincipaletwitch.png Graphic file (type png)
-
-<use img/vueprincipaletwitch.png> [8 <C:/Users/admintech/Documents/GitHub/TSEM2
-/Documentation/img/curlExample.png>]
-<img/vueprincipalestream.png, id=244, 538.26094pt x 457.71pt>
-File: img/vueprincipalestream.png Graphic file (type png)
-
-<use img/vueprincipalestream.png> [9 <C:/Users/admintech/Documents/GitHub/TSEM2
-/Documentation/img/vueprincipaletwitch.png (PNG copy)> <C:/Users/admintech/Docu
-ments/GitHub/TSEM2/Documentation/img/vueprincipalestream.png (PNG copy)>]
-Overfull \hbox (18.07097pt too wide) in paragraph at lines 289--290
+Overfull \hbox (18.07097pt too wide) in paragraph at lines 302--303
 [][] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 317.
+[11 <C:/Users/admintech/Documents/GitHub/TSEM2/Documentation/img/SchemaOAuth2.p
+ng> <C:/Users/admintech/Documents/GitHub/TSEM2/Documentation/img/curlExample.pn
+g>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 330.
 
-Overfull \hbox (18.07097pt too wide) in paragraph at lines 316--317
+Overfull \hbox (18.07097pt too wide) in paragraph at lines 329--330
 [][] 
  []
 
-[10] [11]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 317.
+[12] [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 330.
 
 (C:\Users\admintech\Documents\GitHub\TSEM2\Documentation\WebTVCenter.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 317.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 317.
-
-
-Package rerunfilecheck Warning: File `WebTVCenter.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `WebTVCenter.out':
-(rerunfilecheck)             Before: 9520057172BEFFE561160EEF802DBFAF;2346
-(rerunfilecheck)             After:  8D7DAEDA9000B129C21987EE5C6C939D;2470.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 317.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 330.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 330.
+Package rerunfilecheck Info: File `WebTVCenter.out' has not changed.
+(rerunfilecheck)             Checksum: AC28DA24696857EEECC7C6821915118C;2496.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 330.
  ) 
 Here is how much of TeX's memory you used:
- 16502 strings out of 494019
- 321956 string characters out of 3128541
- 418601 words of memory out of 3000000
- 19410 multiletter control sequences out of 15000+200000
- 62934 words of font info for 40 fonts, out of 3000000 for 9000
+ 16546 strings out of 494019
+ 322769 string characters out of 3128541
+ 416975 words of memory out of 3000000
+ 19448 multiletter control sequences out of 15000+200000
+ 63253 words of font info for 41 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  63i,11n,66p,487b,707s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/admintech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/progr
@@ -925,10 +927,11 @@ nts/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.9/fonts/type1/p
 ublic/lm/lmri10.pfb><C:/Users/admintech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1
 .6_TeXstudio/programs/MiKTeX_2.9/fonts/type1/public/lm/lmri8.pfb><C:/Users/admi
 ntech/Documents/USBTeX-1.6_TeXstudio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.9/f
-onts/type1/public/lm/lmro10.pfb>
-Output written on WebTVCenter.pdf (11 pages, 545545 bytes).
+onts/type1/public/lm/lmro10.pfb><C:/Users/admintech/Documents/USBTeX-1.6_TeXstu
+dio/USBTeX-1.6_TeXstudio/programs/MiKTeX_2.9/fonts/type1/public/lm/lmtt10.pfb>
+Output written on WebTVCenter.pdf (13 pages, 574212 bytes).
 PDF statistics:
- 324 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
- 318 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 348 PDF objects out of 1000 (max. 8388607)
+ 67 named destinations out of 1000 (max. 500000)
+ 334 words of extra memory for PDF output out of 10000 (max. 10000000)
 

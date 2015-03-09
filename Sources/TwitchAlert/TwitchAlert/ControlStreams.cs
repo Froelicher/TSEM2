@@ -12,18 +12,25 @@ namespace TwitchAlert
         private const string URL_API = "https://api.twitch.tv/kraken/";
 
         private JsonSerializer _js;
-        private string _profilTwitch;
+        private Curl _cmdCurl;
+        private bool _connected;
 
-        public string ProfilTwitch
+        public bool Connected
         {
-            get { return _profilTwitch; }
-            set { _profilTwitch = value; }
+            get { return _connected; }
+            set { _connected = value; }
         }
 
         internal JsonSerializer Js
         {
             get { return _js; }
             set { _js = value; }
+        }
+
+        internal Curl CmdCurl
+        {
+            get { return _cmdCurl; }
+            set { _cmdCurl = value; }
         }
 
         public ControlStreams()
@@ -39,9 +46,9 @@ namespace TwitchAlert
 
         public Streams[] GetStreamsFollowed()
         {
-            if (this.ProfilTwitch != "")
+            if (this.Connected)
             {
-                Follows ChannelFollowed = this.Js.Serialize<Follows>(URL_API + "users/" + this.ProfilTwitch + "/follows/channels");
+                Follows ChannelFollowed = this.Js.Serialize<Follows>(URL_API + "users/" + "yolo" + "/follows/channels");
                 Streams[] StreamsArray = new Streams[ChannelFollowed.follows.Length];
                 for (int i = 0; i < ChannelFollowed.follows.Length - 1; i++)
                 {

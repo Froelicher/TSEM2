@@ -8,6 +8,6 @@ namespace TwitchAlert
 {
     class ControlNotification
     {
-
+        
     }
 }

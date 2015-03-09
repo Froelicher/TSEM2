@@ -53,6 +53,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.popupNotifier1 = new NotificationWindow.PopupNotifier();
             this.panelTwitch.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.panelStreams.SuspendLayout();
@@ -99,6 +100,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Follows";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -313,6 +315,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
             // 
+            // popupNotifier1
+            // 
+            this.popupNotifier1.ContentFont = new System.Drawing.Font("Tahoma", 8F);
+            this.popupNotifier1.ContentText = null;
+            this.popupNotifier1.Image = null;
+            this.popupNotifier1.OptionsMenu = null;
+            this.popupNotifier1.Size = new System.Drawing.Size(400, 100);
+            this.popupNotifier1.TitleFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.popupNotifier1.TitleText = null;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -366,6 +378,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button button2;
+        private NotificationWindow.PopupNotifier popupNotifier1;
 
     }
 }

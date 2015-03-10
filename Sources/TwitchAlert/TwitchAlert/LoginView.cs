@@ -12,9 +12,15 @@ namespace TwitchAlert
 {
     public partial class LoginView : Form
     {
-        public LoginView()
+
+        public LoginView() : this(null)
         {
             InitializeComponent();
+        }
+
+        public LoginView(MainView mainView)
+        {
+
         }
 
         private void LoginView_Load(object sender, EventArgs e)
@@ -36,6 +42,15 @@ namespace TwitchAlert
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void timer_checkUrl_Tick(object sender, EventArgs e)
+        {
+            string search = "access_token";
+            if(wbLogin.Url.ToString().IndexOf(search) != -1)
+            {
+
             }
         }   
     }

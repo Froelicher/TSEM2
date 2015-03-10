@@ -15,23 +15,24 @@
 \BOOKMARK [1][-]{section.3}{Analyse de l'existant}{part.2}% 15
 \BOOKMARK [2][-]{subsection.3.1}{Existant}{section.3}% 16
 \BOOKMARK [2][-]{subsection.3.2}{Critique de l'existant}{section.3}% 17
-\BOOKMARK [1][-]{section.4}{Analyse fonctionnelle}{part.2}% 18
-\BOOKMARK [2][-]{subsection.4.1}{Gestion des chaines}{section.4}% 19
-\BOOKMARK [2][-]{subsection.4.2}{Recherche d'une chaine}{section.4}% 20
-\BOOKMARK [2][-]{subsection.4.3}{Ajout d'une cha\356ne}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.4}{Gestion des notifications}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.5}{Interface homme-machine}{section.4}% 23
-\BOOKMARK [3][-]{subsubsection.4.5.1}{Vue principale}{subsection.4.5}% 24
-\BOOKMARK [1][-]{section.5}{Analyse organique}{part.2}% 25
-\BOOKMARK [2][-]{subsection.5.1}{Diagramme de classe}{section.5}% 26
-\BOOKMARK [2][-]{subsection.5.2}{API Twitch \(Twitch.Net\)}{section.5}% 27
-\BOOKMARK [3][-]{subsubsection.5.2.1}{OAuth 2.0}{subsection.5.2}% 28
-\BOOKMARK [3][-]{subsubsection.5.2.2}{Site d'autorisation}{subsection.5.2}% 29
-\BOOKMARK [3][-]{subsubsection.5.2.3}{cURL}{subsection.5.2}% 30
-\BOOKMARK [1][-]{section.6}{Tests}{part.2}% 31
-\BOOKMARK [1][-]{section.7}{Conclusion}{part.2}% 32
-\BOOKMARK [1][-]{section.8}{Glossaire}{part.2}% 33
-\BOOKMARK [1][-]{section.9}{Annexes}{part.2}% 34
-\BOOKMARK [2][-]{subsection.9.1}{Planification}{section.9}% 35
-\BOOKMARK [3][-]{subsubsection.9.1.1}{Planification pr\351visionnelle}{subsection.9.1}% 36
-\BOOKMARK [3][-]{subsubsection.9.1.2}{Planning r\351el}{subsection.9.1}% 37
+\BOOKMARK [0][-]{part.3}{III Analyse fonctionnelle}{}% 18
+\BOOKMARK [1][-]{section.4}{Gestion des chaines}{part.3}% 19
+\BOOKMARK [1][-]{section.5}{Recherche d'une chaine}{part.3}% 20
+\BOOKMARK [1][-]{section.6}{Ajout d'une cha\356ne}{part.3}% 21
+\BOOKMARK [1][-]{section.7}{Gestion des notifications}{part.3}% 22
+\BOOKMARK [1][-]{section.8}{Interface homme-machine}{part.3}% 23
+\BOOKMARK [2][-]{subsection.8.1}{Vue principale}{section.8}% 24
+\BOOKMARK [2][-]{subsection.8.2}{Vue d\351tail d'une cha\356ne}{section.8}% 25
+\BOOKMARK [0][-]{part.4}{IV Analyse organique}{}% 26
+\BOOKMARK [1][-]{section.9}{Diagramme de classe}{part.4}% 27
+\BOOKMARK [1][-]{section.10}{API Twitch \(Twitch.Net\)}{part.4}% 28
+\BOOKMARK [2][-]{subsection.10.1}{OAuth 2.0}{section.10}% 29
+\BOOKMARK [2][-]{subsection.10.2}{Site d'autorisation}{section.10}% 30
+\BOOKMARK [2][-]{subsection.10.3}{cURL}{section.10}% 31
+\BOOKMARK [1][-]{section.11}{Tests}{part.4}% 32
+\BOOKMARK [1][-]{section.12}{Conclusion}{part.4}% 33
+\BOOKMARK [1][-]{section.13}{Glossaire}{part.4}% 34
+\BOOKMARK [1][-]{section.14}{Annexes}{part.4}% 35
+\BOOKMARK [2][-]{subsection.14.1}{Planification}{section.14}% 36
+\BOOKMARK [3][-]{subsubsection.14.1.1}{Planification pr\351visionnelle}{subsection.14.1}% 37
+\BOOKMARK [3][-]{subsubsection.14.1.2}{Planning r\351el}{subsection.14.1}% 38

@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.wbLogin = new System.Windows.Forms.WebBrowser();
+            this.timer_checkUrl = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // wbLogin
@@ -41,6 +43,10 @@
             this.wbLogin.TabIndex = 0;
             this.wbLogin.Url = new System.Uri("http://froelicher.github.io/TwitchAlert/test/integration.html", System.UriKind.Absolute);
             this.wbLogin.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbLogin_DocumentCompleted);
+            // 
+            // timer_checkUrl
+            // 
+            this.timer_checkUrl.Tick += new System.EventHandler(this.timer_checkUrl_Tick);
             // 
             // LoginView
             // 
@@ -58,5 +64,6 @@
         #endregion
 
         private System.Windows.Forms.WebBrowser wbLogin;
+        private System.Windows.Forms.Timer timer_checkUrl;
     }
 }

@@ -7,19 +7,12 @@ using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert
 {
-    class ControlStreams
+    class StreamModel
     {
         private const string URL_API = "https://api.twitch.tv/kraken/";
 
-        private JsonSerializer _js;
         private Curl _cmdCurl;
-        private bool _connected;
-
-        public bool Connected
-        {
-            get { return _connected; }
-            set { _connected = value; }
-        }
+        private JsonSerializer _js;
 
         internal JsonSerializer Js
         {
@@ -33,32 +26,10 @@ namespace TwitchAlert
             set { _cmdCurl = value; }
         }
 
-        public ControlStreams()
+        public StreamModel()
         {
+            this.CmdCurl = new Curl();
             this.Js = new JsonSerializer();
-        }
-
-        public Streams GetStreamsFollowed(string channel_name)
-        {
-            //FAUX CODE
-            return this.Js.Serialize<Streams>(URL_API + "streams/"+channel_name);
-        }
-
-        public Streams[] GetStreamsFollowed()
-        {
-            if (this.Connected)
-            {
-                Follows ChannelFollowed = this.Js.Serialize<Follows>(URL_API + "users/" + "yolo" + "/follows/channels");
-                Streams[] StreamsArray = new Streams[ChannelFollowed.follows.Length];
-                for (int i = 0; i < ChannelFollowed.follows.Length - 1; i++)
-                {
-                    StreamsArray[i] = this.Js.Serialize<Streams>(URL_API + "streams/" + ChannelFollowed.follows[i].channel.name);
-                }
-
-                return StreamsArray;
-            }
-
-            return null;
         }
 
         public Streams GetStreamsPopoular()

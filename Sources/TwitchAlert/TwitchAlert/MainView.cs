@@ -17,13 +17,16 @@ namespace TwitchAlert
     public partial class MainView : Form
     {
         private Curl _cmdCurl;
+        private UserModel _user;
+        private NotificationModel _notif;
+
         public MainView()
         {
             InitializeComponent();
-            ControlStreams cs = new ControlStreams();
-            //cs.ProfilTwitch = "grunghi";
-
-            cs.GetGamesSearch("star");
+            this._user = new UserModel();
+            this._user.AccessToken = "mg4dak98dvpogi0ogcu0e7l8btgj1i";
+            this._user.FillStreamsFollowed();
+            this._notif = new NotificationModel(_user);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -57,6 +60,12 @@ namespace TwitchAlert
             popupNotifier1.ImageSize = sizeimg;
 
             popupNotifier1.Popup();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this._notif.FillStreamOnline();
+            this._notif.CheckNewStreamOnline();
         }
     }
 }

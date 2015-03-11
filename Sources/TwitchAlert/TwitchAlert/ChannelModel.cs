@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace TwitchAlert
 {
-    class ControlNotification
+    class ChannelModel
     {
-        
     }
 }

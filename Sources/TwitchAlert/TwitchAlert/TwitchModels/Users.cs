@@ -35,6 +35,12 @@ namespace TwitchAlert.TwitchModels
         public string logo { get; set; }
 
         [DataMember]
+        public string email { get; set; }
+
+        [DataMember]
+        public bool partnered { get; set; }
+
+        [DataMember]
         public UsersLinks _links { get; set; }
 
         [DataContract]

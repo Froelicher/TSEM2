@@ -27,35 +27,34 @@ namespace TwitchAlert
         public NotificationModel(UserModel usr)
         {
             this.User = usr;
-            this.StreamOnline = new List<Stream>();
+            this.StreamOnline = this.User.StreamsFollowed;
         }
 
-        /// <summary>
-        /// Fill the list of online stream with the list of followed stream
-        /// </summary>
-        public void FillStreamOnline()
+        public void UpdateStreamsOnline()
         {
             this.User.FillStreamsFollowed();
-            for (int i = 0; i < this.User.StreamsFollowed.Count()-1; i++)
-            {
-                if(this.User.StreamsFollowed[i] != null)
-                {
-                    this.StreamOnline.Add(this.User.StreamsFollowed[i]);
-                }
-            }
+            this.StreamOnline = this.User.StreamsFollowed;
         }
 
-
-        public void CheckNewStreamOnline()
+        public List<Stream> CheckNewStreamOnline()
         {
-            List<Stream> oldStreamOnline = this.StreamOnline;
-            this.FillStreamOnline();
+            List<Stream> oldStreamOnline = new List<Stream>(this.StreamOnline);
 
-            var DifferencesList = oldStreamOnline.Where(x => !this.StreamOnline.Any(x1 => x1._id == x._id))
-            .Union(this.StreamOnline.Where(x => !oldStreamOnline.Any(x1 => x1._id == x._id)));
+            this.UpdateStreamsOnline();
 
+            List<Stream> diff = new List<Stream>(this.StreamOnline);
 
-
+            for(int i = 0; i < this.StreamOnline.Count(); i++)
+            {
+                for(int j = 0; j < oldStreamOnline.Count(); j++)
+                {
+                    if(this.StreamOnline[i]._id == oldStreamOnline[j]._id)
+                    {
+                        diff.Remove(StreamOnline[i]);
+                    }
+                }
+            }
+            return diff;
         }
     }
 }

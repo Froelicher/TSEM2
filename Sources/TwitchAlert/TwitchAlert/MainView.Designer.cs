@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelTwitch = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -54,6 +55,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.popupNotifier1 = new NotificationWindow.PopupNotifier();
+            this.timerCheckNewStream = new System.Windows.Forms.Timer(this.components);
             this.panelTwitch.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.panelStreams.SuspendLayout();
@@ -326,6 +328,12 @@
             this.popupNotifier1.TitleFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.popupNotifier1.TitleText = null;
             // 
+            // timerCheckNewStream
+            // 
+            this.timerCheckNewStream.Enabled = true;
+            this.timerCheckNewStream.Interval = 10000;
+            this.timerCheckNewStream.Tick += new System.EventHandler(this.timerCheckNewStream_Tick);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,6 +388,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button button2;
         private NotificationWindow.PopupNotifier popupNotifier1;
+        private System.Windows.Forms.Timer timerCheckNewStream;
 
     }
 }

@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChannelController.cs" />
     <Compile Include="ChannelModel.cs" />
     <Compile Include="Curl.cs" />
     <Compile Include="JsonSerializer.cs" />

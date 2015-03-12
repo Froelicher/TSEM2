@@ -13,7 +13,14 @@ namespace TwitchAlert
         private JsonSerializer _js;
         private Curl _cmdCurl;
         private List<Stream> _streamsFollowed;
+        private List<Follow> _channelsFollowed;
         private Users _currentUser;
+
+        internal List<Follow> ChannelsFollowed
+        {
+            get { return _channelsFollowed; }
+            set { _channelsFollowed = value; }
+        }
 
         internal Users CurrentUser
         {
@@ -62,6 +69,15 @@ namespace TwitchAlert
             {
                 Streams streamsFollowed = this.CmdCurl.SendRequest<Streams>("https://api.twitch.tv/kraken/streams/followed", "GET", this.AccessToken);
                 this.StreamsFollowed = new List<Stream>(streamsFollowed.streams);
+            }
+        }
+
+        public void FillChannelsFollowed()
+        {
+            if(this.AccessToken != "")
+            {
+                Follows channelsFollowed = this.Js.Serialize<Follows>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels");
+                this.ChannelsFollowed = new List<Follow>(channelsFollowed.follows);
             }
         }
 

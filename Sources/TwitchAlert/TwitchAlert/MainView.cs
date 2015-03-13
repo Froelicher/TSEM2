@@ -152,14 +152,12 @@ namespace TwitchAlert
                 }
                 gPanel.BackColor = Color.White;
 
-
                 //CREATE PICTUREBOX
                 PictureBox preview = new PictureBox();
                 preview.Location = new Point(15, 35);
                 preview.Size = new Size(150, 82);
                 preview.SizeMode = PictureBoxSizeMode.StretchImage;
                 preview.Load(listStreams[i, 0]);
-
 
                 //CREATE LABEL_TITLE
                 Label title = new Label();
@@ -185,6 +183,17 @@ namespace TwitchAlert
                 viewers.Text = listStreams[i, 4];
                 viewers.Size = new Size(200, 20);
 
+                //CREATE BTN_FOLLOW
+                if (!_user.CheckIsFollowed(listStreams[i,2]))
+                {
+                    Button follow = new Button();
+                    follow.Location = new Point(380, 35);
+                    follow.Size = new Size(50, 20);
+                    follow.Text = "Follow";
+                    gPanel.Controls.Add(follow);
+                }
+                
+
                 //ADD CONTROLS TO PANEL STREAMS
                 gPanel.Controls.Add(viewers);
                 gPanel.Controls.Add(game);
@@ -194,8 +203,6 @@ namespace TwitchAlert
                 panelStreams.Controls.Add(gPanel);
             }
         }
-
-
 
         private void DisplayChannelsFollowed(string[,] listChannels)
         {
@@ -252,7 +259,6 @@ namespace TwitchAlert
                 panelStreams.Controls.Add(gPanel);
             }
         }
-
 
 
         private void label1_Click(object sender, EventArgs e)

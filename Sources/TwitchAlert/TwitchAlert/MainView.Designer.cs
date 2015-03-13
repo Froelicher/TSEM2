@@ -30,13 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelTwitch = new System.Windows.Forms.Panel();
+            this.btnStreamsPopular = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnStreamsOnline = new System.Windows.Forms.Button();
+            this.btnChannel = new System.Windows.Forms.Button();
             this.panelSearch = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.tbxSearch = new System.Windows.Forms.TextBox();
+            this.cmbSearch = new System.Windows.Forms.ComboBox();
             this.panelStreams = new System.Windows.Forms.Panel();
             this.popupNotifier1 = new NotificationWindow.PopupNotifier();
             this.timerCheckNewStream = new System.Windows.Forms.Timer(this.components);
@@ -47,13 +48,28 @@
             // panelTwitch
             // 
             this.panelTwitch.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panelTwitch.Controls.Add(this.btnStreamsPopular);
             this.panelTwitch.Controls.Add(this.btnLogin);
-            this.panelTwitch.Controls.Add(this.button2);
-            this.panelTwitch.Controls.Add(this.button1);
+            this.panelTwitch.Controls.Add(this.btnStreamsOnline);
+            this.panelTwitch.Controls.Add(this.btnChannel);
             this.panelTwitch.Location = new System.Drawing.Point(13, 12);
             this.panelTwitch.Name = "panelTwitch";
-            this.panelTwitch.Size = new System.Drawing.Size(349, 36);
+            this.panelTwitch.Size = new System.Drawing.Size(495, 36);
             this.panelTwitch.TabIndex = 0;
+            // 
+            // btnStreamsPopular
+            // 
+            this.btnStreamsPopular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(65)))), ((int)(((byte)(165)))));
+            this.btnStreamsPopular.FlatAppearance.BorderSize = 0;
+            this.btnStreamsPopular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStreamsPopular.ForeColor = System.Drawing.Color.White;
+            this.btnStreamsPopular.Location = new System.Drawing.Point(10, 7);
+            this.btnStreamsPopular.Name = "btnStreamsPopular";
+            this.btnStreamsPopular.Size = new System.Drawing.Size(93, 23);
+            this.btnStreamsPopular.TabIndex = 3;
+            this.btnStreamsPopular.Text = "Streams popular";
+            this.btnStreamsPopular.UseVisualStyleBackColor = false;
+            this.btnStreamsPopular.Click += new System.EventHandler(this.btnStreamsPopular_Click);
             // 
             // btnLogin
             // 
@@ -61,76 +77,81 @@
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(247, 7);
+            this.btnLogin.Location = new System.Drawing.Point(336, 7);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(90, 23);
+            this.btnLogin.Size = new System.Drawing.Size(156, 23);
             this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // button2
+            // btnStreamsOnline
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(65)))), ((int)(((byte)(165)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(129, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Follows";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnStreamsOnline.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(65)))), ((int)(((byte)(165)))));
+            this.btnStreamsOnline.FlatAppearance.BorderSize = 0;
+            this.btnStreamsOnline.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStreamsOnline.ForeColor = System.Drawing.Color.White;
+            this.btnStreamsOnline.Location = new System.Drawing.Point(139, 7);
+            this.btnStreamsOnline.Name = "btnStreamsOnline";
+            this.btnStreamsOnline.Size = new System.Drawing.Size(93, 23);
+            this.btnStreamsOnline.TabIndex = 1;
+            this.btnStreamsOnline.Text = "Streams online";
+            this.btnStreamsOnline.UseVisualStyleBackColor = false;
+            this.btnStreamsOnline.Click += new System.EventHandler(this.btnStreamsOnline_Click);
             // 
-            // button1
+            // btnChannel
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(62)))), ((int)(((byte)(168)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(10, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Follows";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnChannel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(62)))), ((int)(((byte)(168)))));
+            this.btnChannel.FlatAppearance.BorderSize = 0;
+            this.btnChannel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChannel.ForeColor = System.Drawing.Color.White;
+            this.btnChannel.Location = new System.Drawing.Point(238, 7);
+            this.btnChannel.Name = "btnChannel";
+            this.btnChannel.Size = new System.Drawing.Size(92, 23);
+            this.btnChannel.TabIndex = 0;
+            this.btnChannel.Text = "Channel Followed";
+            this.btnChannel.UseVisualStyleBackColor = false;
+            this.btnChannel.Click += new System.EventHandler(this.btnChannel_Click);
             // 
             // panelSearch
             // 
             this.panelSearch.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.panelSearch.Controls.Add(this.button4);
-            this.panelSearch.Controls.Add(this.textBox1);
-            this.panelSearch.Controls.Add(this.comboBox1);
+            this.panelSearch.Controls.Add(this.btnSearch);
+            this.panelSearch.Controls.Add(this.tbxSearch);
+            this.panelSearch.Controls.Add(this.cmbSearch);
             this.panelSearch.Location = new System.Drawing.Point(13, 54);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(349, 44);
+            this.panelSearch.Size = new System.Drawing.Size(495, 44);
             this.panelSearch.TabIndex = 1;
             // 
-            // button4
+            // btnSearch
             // 
-            this.button4.Location = new System.Drawing.Point(319, 12);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(25, 21);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSearch.Location = new System.Drawing.Point(430, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(52, 21);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // textBox1
+            // tbxSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
-            this.textBox1.TabIndex = 1;
+            this.tbxSearch.Location = new System.Drawing.Point(133, 13);
+            this.tbxSearch.Name = "tbxSearch";
+            this.tbxSearch.Size = new System.Drawing.Size(291, 20);
+            this.tbxSearch.TabIndex = 1;
             // 
-            // comboBox1
+            // cmbSearch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(10, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(90, 21);
-            this.comboBox1.TabIndex = 0;
+            this.cmbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSearch.FormattingEnabled = true;
+            this.cmbSearch.Items.AddRange(new object[] {
+            "Stream name",
+            "Game name"});
+            this.cmbSearch.Location = new System.Drawing.Point(10, 12);
+            this.cmbSearch.Name = "cmbSearch";
+            this.cmbSearch.Size = new System.Drawing.Size(117, 21);
+            this.cmbSearch.TabIndex = 0;
             // 
             // panelStreams
             // 
@@ -181,14 +202,15 @@
         private System.Windows.Forms.Panel panelTwitch;
         private System.Windows.Forms.Panel panelSearch;
         private System.Windows.Forms.Panel panelStreams;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnChannel;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox tbxSearch;
+        private System.Windows.Forms.ComboBox cmbSearch;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnStreamsOnline;
         private NotificationWindow.PopupNotifier popupNotifier1;
         private System.Windows.Forms.Timer timerCheckNewStream;
+        private System.Windows.Forms.Button btnStreamsPopular;
 
     }
 }

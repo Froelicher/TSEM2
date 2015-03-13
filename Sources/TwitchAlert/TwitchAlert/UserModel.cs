@@ -143,5 +143,17 @@ namespace TwitchAlert
                 this.CmdCurl.SendRequest<Follow>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels/" + channel_name, "DELETE", this.AccessToken);
             }
         }
+
+        public bool CheckIsFollowed(string channel_name)
+        {
+            for (int i = 0; i < this.ChannelsFollowed.Count(); i++)
+            {
+                if (this.ChannelsFollowed[i].channel.name == channel_name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

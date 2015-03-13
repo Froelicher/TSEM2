@@ -16,12 +16,24 @@ namespace TwitchAlert
 {
     public partial class MainView : Form
     {
-        private Curl _cmdCurl;
         private UserModel _user;
-        private NotificationModel _notif;
         private NotificationModel _notifModel;
+        private StreamModel _strmModel;
         private NotificationController _notifController;
         private ChannelController _chanController;
+        private StreamController _strmController;
+
+        internal StreamController StrmController
+        {
+            get { return _strmController; }
+            set { _strmController = value; }
+        }
+
+        internal StreamModel StrmModel
+        {
+            get { return _strmModel; }
+            set { _strmModel = value; }
+        }
 
         internal ChannelController ChanController
         {
@@ -46,12 +58,15 @@ namespace TwitchAlert
         {
             InitializeComponent();
             this._user = new UserModel();
-            this._user.AccessToken = "xt3q3jcx2xyn0yo9i73s4ooa17ua60";
+            this._user.AccessToken = "iv1qyyy4j1u4qlanw762xb4nq1y73s";
             this._user.FillStreamsFollowed();
             this._user.FillChannelsFollowed();
-            this.ChanController = new ChannelController(this, _user);
+            this.ChanController = new ChannelController(this, _user);        
+            this.StrmModel = new StreamModel();
+            this.StrmController = new StreamController(this, StrmModel);
             this.NotifModel = new NotificationModel(_user);
             this.NotifController = new NotificationController(this, this.NotifModel);
+            this.cmbSearch.SelectedIndex = 0;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -60,12 +75,12 @@ namespace TwitchAlert
             loginView.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnStreamsOnline_Click(object sender, EventArgs e)
         {
             this.DisplayStreamsOnline(this.ChanController.GetInfosDisplayStreamsOnline());
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnChannel_Click(object sender, EventArgs e)
         {
             this.DisplayChannelsFollowed(this.ChanController.GetInfosDisplayChannels());
         }
@@ -102,21 +117,37 @@ namespace TwitchAlert
 
         private void DisplayStreamsOnline(string[,] listStream)
         {
+            this.CreatePanelStreams(this.ChanController.GetNbStreamOnline(), listStream);    
+        }
+
+        private void DisplayStreamsPopular(string[,] listStream)
+        {
+            this.CreatePanelStreams(this.StrmController.GetNbStreamsPopular(), listStream);
+        }
+
+        private void DisplayStreamsSearch(string[,] listStream, string request)
+        {
+            this.CreatePanelStreams(this.StrmController.GetNbStreamsSearch(request), listStream);
+        }
+
+        private void CreatePanelStreams(int nbPanel, string[,] listStreams)
+        {
             this.panelStreams.Controls.Clear();
             int space = 10;
             int spaceHeightPanel = 0;
-            for (int i = 0; i < this.ChanController.GetNbStreamOnline(); i++)
+
+            for (int i = 0; i < nbPanel; i++)
             {
                 //CREATE PANEL
                 Panel gPanel = new Panel();
                 gPanel.Size = new Size(460, 145);
-                if(i == 0)
+                if (i == 0)
                 {
                     gPanel.Location = new Point(10, 10);
                 }
                 else
                 {
-                    spaceHeightPanel = space * (i + 1) + (145*(i));
+                    spaceHeightPanel = space * (i + 1) + (145 * (i));
                     gPanel.Location = new Point(10, spaceHeightPanel);
                 }
                 gPanel.BackColor = Color.White;
@@ -127,31 +158,31 @@ namespace TwitchAlert
                 preview.Location = new Point(15, 35);
                 preview.Size = new Size(150, 82);
                 preview.SizeMode = PictureBoxSizeMode.StretchImage;
-                preview.Load(listStream[i,0]);
+                preview.Load(listStreams[i, 0]);
 
 
                 //CREATE LABEL_TITLE
                 Label title = new Label();
                 title.Location = new Point(15, 10);
-                title.Text = listStream[i, 1];
+                title.Text = listStreams[i, 1];
                 title.Size = new Size(400, 20);
 
                 //CREATE LABEL_CHANNEL_NAME
                 Label channel = new Label();
                 channel.Location = new Point(180, 35);
-                channel.Text = listStream[i, 2];
+                channel.Text = listStreams[i, 2];
                 channel.Size = new Size(200, 20);
 
                 //CREATE LABEL_GAME
                 Label game = new Label();
                 game.Location = new Point(180, 70);
-                game.Text = listStream[i, 3];
+                game.Text = listStreams[i, 3];
                 game.Size = new Size(200, 20);
 
                 //CREATE LABEL_VIEWERS
                 Label viewers = new Label();
                 viewers.Location = new Point(180, 105);
-                viewers.Text = listStream[i, 4];
+                viewers.Text = listStreams[i, 4];
                 viewers.Size = new Size(200, 20);
 
                 //ADD CONTROLS TO PANEL STREAMS
@@ -162,8 +193,9 @@ namespace TwitchAlert
                 gPanel.Controls.Add(preview);
                 panelStreams.Controls.Add(gPanel);
             }
-                
         }
+
+
 
         private void DisplayChannelsFollowed(string[,] listChannels)
         {
@@ -221,9 +253,29 @@ namespace TwitchAlert
             }
         }
 
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (cmbSearch.SelectedIndex == 0)
+            {
+                this.DisplayStreamsSearch(this.StrmController.GetInfosDisplayStreamsSearch(this.tbxSearch.Text), this.tbxSearch.Text);
+            }
+
+            if (cmbSearch.SelectedIndex == 1)
+            {
+
+            }
+        }
+
+        private void btnStreamsPopular_Click(object sender, EventArgs e)
+        {
+            this.DisplayStreamsPopular(this.StrmController.GetInfosDisplayStreams());
         }
     }
 }

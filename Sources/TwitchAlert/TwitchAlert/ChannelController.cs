@@ -73,5 +73,14 @@ namespace TwitchAlert
             }
             return arrayInfosChannels;
         }
+
+        public void FollowChannel(string channel_name)
+        {
+            if(!this.UsrModel.CheckIsFollowed(channel_name))
+            {
+                this.UsrModel.FollowChannel(channel_name);
+            }
+            
+        }
     }
 }

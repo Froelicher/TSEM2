@@ -127,7 +127,7 @@ namespace TwitchAlert
         {
             if(this.AccessToken != "")
             {
-                Follow streamToFollow = this.CmdCurl.SendRequest<Follow>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels/" + channel_name, "PUT", this.AccessToken);
+                this.CmdCurl.SendRequest<Follow>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels/" + channel_name, "PUT", this.AccessToken);
                 this.FillStreamsFollowed();
             }
         }
@@ -141,6 +141,7 @@ namespace TwitchAlert
             if(this.AccessToken != "")
             {
                 this.CmdCurl.SendRequest<Follow>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels/" + channel_name, "DELETE", this.AccessToken);
+                this.FillStreamsFollowed();
             }
         }
 
@@ -148,7 +149,7 @@ namespace TwitchAlert
         {
             for (int i = 0; i < this.ChannelsFollowed.Count(); i++)
             {
-                if (this.ChannelsFollowed[i].channel.name == channel_name)
+                if (this.ChannelsFollowed[i].channel.display_name == channel_name)
                 {
                     return true;
                 }

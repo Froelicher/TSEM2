@@ -58,7 +58,7 @@ namespace TwitchAlert
         {
             InitializeComponent();
             this._user = new UserModel();
-            this._user.AccessToken = "iv1qyyy4j1u4qlanw762xb4nq1y73s";
+            this._user.AccessToken = "peu0unkvmn16sko1te9mh8ytpm8vhd";
             this._user.FillStreamsFollowed();
             this._user.FillChannelsFollowed();
             this.ChanController = new ChannelController(this, _user);        
@@ -96,10 +96,10 @@ namespace TwitchAlert
 
             if (listInfo != null)
             {
-                popupNotifier1.TitleText = listInfo[0];
-                popupNotifier1.ContentText = listInfo[1] + " \n" + listInfo[2] + " \n" + listInfo[3];
-                popupNotifier1.ContentPadding = new Padding(1);
-                popupNotifier1.TitlePadding = new Padding(1);
+                popNotifStreams.TitleText = listInfo[0];
+                popNotifStreams.ContentText = listInfo[1] + " \n" + listInfo[2] + " \n" + listInfo[3];
+                popNotifStreams.ContentPadding = new Padding(1);
+                popNotifStreams.TitlePadding = new Padding(1);
                 WebClient wc = new WebClient();
                 byte[] bytes = wc.DownloadData(listInfo[4]);
                 MemoryStream ms = new MemoryStream(bytes);
@@ -108,10 +108,15 @@ namespace TwitchAlert
                 //Redimmensionnement pour une image de base de 320x180
                 System.Drawing.Size sizeimg = new System.Drawing.Size(150, 82);
 
-                popupNotifier1.Image = img;
-                popupNotifier1.ImagePadding = new Padding(5);
-                popupNotifier1.ImageSize = sizeimg;
-                popupNotifier1.Popup();
+                popNotifStreams.Image = img;
+                popNotifStreams.ImagePadding = new Padding(5);
+                popNotifStreams.ImageSize = sizeimg;
+                popNotifStreams.Click += (s, e) =>
+                {
+                    ChannelView channelView = new ChannelView(listInfo[2]);
+                    channelView.Show();
+                }; 
+                popNotifStreams.Popup();
             }
         }
 
@@ -138,6 +143,7 @@ namespace TwitchAlert
 
             for (int i = 0; i < nbPanel; i++)
             {
+                int test = i;
                 //CREATE PANEL
                 Panel gPanel = new Panel();
                 gPanel.Size = new Size(460, 145);
@@ -184,15 +190,39 @@ namespace TwitchAlert
                 viewers.Size = new Size(200, 20);
 
                 //CREATE BTN_FOLLOW
-                if (!_user.CheckIsFollowed(listStreams[i,2]))
+                Button follow = new Button();
+                follow.Location = new Point(380, 35);
+                follow.Size = new Size(50, 20);
+
+                if (!_user.CheckIsFollowed(listStreams[i, 2]))
                 {
-                    Button follow = new Button();
-                    follow.Location = new Point(380, 35);
-                    follow.Size = new Size(50, 20);
                     follow.Text = "Follow";
-                    gPanel.Controls.Add(follow);
+                    follow.Click += (s, e) =>
+                    {
+                        this.ChanController.FollowChannel(listStreams[test, 2]);
+                    }; 
                 }
-                
+                else
+                {
+                    follow.Text = "Unfollow";
+                    follow.Click += (s, e) =>
+                    {
+                        this.ChanController.UnFollowChannel(listStreams[test, 2]);
+                    }; 
+                }
+
+
+
+                gPanel.Controls.Add(follow);
+                //CREATE BTN_CHANNEL_VIEW
+                Button play = new Button();
+                play.Location = new Point(380, 105);
+                play.Size = new Size(50, 20);
+                play.Text = "Play";
+                play.Click += (s, e) => { ChannelView channelView = new ChannelView(listStreams[test, 2]);
+                                          channelView.Show();
+                                        };
+                gPanel.Controls.Add(play);
 
                 //ADD CONTROLS TO PANEL STREAMS
                 gPanel.Controls.Add(viewers);
@@ -282,6 +312,36 @@ namespace TwitchAlert
         private void btnStreamsPopular_Click(object sender, EventArgs e)
         {
             this.DisplayStreamsPopular(this.StrmController.GetInfosDisplayStreams());
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChannelView channelView = new ChannelView("hearthstonefr");
+            channelView.Show();
+        }
+
+        private void MainView_Resize(object sender, EventArgs e)
+        {
+            notifyIcon1.BalloonTipTitle = "Twitch Alert is reduced";
+            notifyIcon1.BalloonTipText = "Double click to icon to open the main window";
+            
+
+            if(FormWindowState.Minimized == this.WindowState)
+            {
+                notifyIcon1.Visible = true;
+                notifyIcon1.ShowBalloonTip(500);
+                this.Hide();
+            }
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                notifyIcon1.Visible = false;
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
     }
 }

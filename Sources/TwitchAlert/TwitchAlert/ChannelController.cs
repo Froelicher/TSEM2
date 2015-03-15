@@ -11,14 +11,29 @@ namespace TwitchAlert
     {
         private const int NB_INFOS_STREAM = 5;
         private const int NB_INFOS_CHANNEL = 4;
+        private const int NB_INFOS_CHANNEL_VIEW = 18;
 
         private UserModel _usrModel;
-        private MainView _view;
+        private MainView _mainView;
+        private ChannelView _chanView;
+        private StreamModel _strmModel;
 
-        public MainView View
+        internal StreamModel StrmModel
         {
-            get { return _view; }
-            set { _view = value; }
+            get { return _strmModel; }
+            set { _strmModel = value; }
+        }
+
+        public ChannelView ChanView
+        {
+            get { return _chanView; }
+            set { _chanView = value; }
+        }
+
+        public MainView MainView
+        {
+            get { return _mainView; }
+            set { _mainView = value; }
         }
 
         internal UserModel UsrModel
@@ -29,12 +44,29 @@ namespace TwitchAlert
 
         public ChannelController(MainView view, UserModel usrModel)
         {
-            this.View = view;
+            this.MainView = view;
             this.UsrModel = usrModel;
+        }
+
+        public ChannelController(ChannelView view, StreamModel model)
+        {
+            this.ChanView = view;
+            this.StrmModel = model;
+        }
+
+        public int GetNbStreamOnline()
+        {
+            return this.UsrModel.StreamsFollowed.Count();
+        }
+
+        public int GetNbChannelFollowed()
+        {
+            return this.UsrModel.ChannelsFollowed.Count();
         }
 
         public string[,] GetInfosDisplayStreamsOnline()
         {
+            this.UsrModel.FillStreamsFollowed();
             List<Stream> listStream = this.UsrModel.StreamsFollowed;
             string[,] arrayInfosStreams = new string[listStream.Count(), NB_INFOS_STREAM];
 
@@ -47,16 +79,6 @@ namespace TwitchAlert
                 arrayInfosStreams[i, 4] = listStream[i].viewers.ToString();
             }
             return arrayInfosStreams;
-        }
-
-        public int GetNbStreamOnline()
-        {
-            return this.UsrModel.StreamsFollowed.Count();
-        }
-
-        public int GetNbChannelFollowed()
-        {
-            return this.UsrModel.ChannelsFollowed.Count();
         }
 
         public string[,] GetInfosDisplayChannels()
@@ -74,13 +96,47 @@ namespace TwitchAlert
             return arrayInfosChannels;
         }
 
+        public string[] GetAllInfosChannel(string channel_name)
+        {
+            Streams currentStream = this.StrmModel.GetAllInfosStream(channel_name);
+            string[] arrayInfosStream = new string[NB_INFOS_CHANNEL_VIEW];
+
+            arrayInfosStream[0] = currentStream.stream.channel.status;
+            arrayInfosStream[1] = currentStream.stream.channel.display_name;
+            arrayInfosStream[2] = currentStream.stream.game;
+            arrayInfosStream[3] = currentStream.stream.channel.logo;
+            arrayInfosStream[4] = currentStream.stream.viewers.ToString();
+            arrayInfosStream[5] = currentStream.stream.created_at.ToString();
+            arrayInfosStream[6] = currentStream.stream.channel.name;
+            arrayInfosStream[7] = currentStream.stream.channel.followers.ToString();
+            arrayInfosStream[8] = currentStream.stream.channel.views.ToString();
+            arrayInfosStream[9] = currentStream.stream.channel.created_at;
+            arrayInfosStream[10] = currentStream.stream.channel.updated_at;
+            arrayInfosStream[11] = currentStream.stream.channel.url;
+            arrayInfosStream[12] = currentStream.stream.channel.partner;
+            arrayInfosStream[13] = currentStream.stream.channel.mature;
+            arrayInfosStream[14] = currentStream.stream.channel.delay.ToString();
+            arrayInfosStream[15] = currentStream.stream.channel._id.ToString();
+            arrayInfosStream[16] = currentStream.stream.channel.broadcaster_language;
+            arrayInfosStream[17] = currentStream.stream.channel.language;
+
+            return arrayInfosStream;
+        }
+
         public void FollowChannel(string channel_name)
         {
             if(!this.UsrModel.CheckIsFollowed(channel_name))
             {
                 this.UsrModel.FollowChannel(channel_name);
             }
-            
+        }
+
+        public void UnFollowChannel(string channel_name)
+        {
+            if (this.UsrModel.CheckIsFollowed(channel_name))
+            {
+                this.UsrModel.UnFollowChannel(channel_name);
+            }
         }
     }
 }

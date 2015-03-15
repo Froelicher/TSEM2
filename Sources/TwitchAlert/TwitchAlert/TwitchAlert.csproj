@@ -59,6 +59,12 @@
   <ItemGroup>
     <Compile Include="ChannelController.cs" />
     <Compile Include="ChannelModel.cs" />
+    <Compile Include="ChannelView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChannelView.Designer.cs">
+      <DependentUpon>ChannelView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Curl.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="LoginView.cs">
@@ -94,6 +100,9 @@
     <Compile Include="TwitchModels\Video.cs" />
     <Compile Include="TwitchModels\Videos.cs" />
     <Compile Include="UserModel.cs" />
+    <EmbeddedResource Include="ChannelView.resx">
+      <DependentUpon>ChannelView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginView.resx">
       <DependentUpon>LoginView.cs</DependentUpon>
     </EmbeddedResource>

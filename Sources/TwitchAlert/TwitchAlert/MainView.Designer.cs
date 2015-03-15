@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.panelTwitch = new System.Windows.Forms.Panel();
             this.btnStreamsPopular = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -39,8 +40,9 @@
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.cmbSearch = new System.Windows.Forms.ComboBox();
             this.panelStreams = new System.Windows.Forms.Panel();
-            this.popupNotifier1 = new NotificationWindow.PopupNotifier();
+            this.popNotifStreams = new NotificationWindow.PopupNotifier();
             this.timerCheckNewStream = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelTwitch.SuspendLayout();
             this.panelSearch.SuspendLayout();
             this.SuspendLayout();
@@ -162,21 +164,28 @@
             this.panelStreams.Size = new System.Drawing.Size(496, 399);
             this.panelStreams.TabIndex = 2;
             // 
-            // popupNotifier1
+            // popNotifStreams
             // 
-            this.popupNotifier1.ContentFont = new System.Drawing.Font("Tahoma", 8F);
-            this.popupNotifier1.ContentText = null;
-            this.popupNotifier1.Image = null;
-            this.popupNotifier1.OptionsMenu = null;
-            this.popupNotifier1.Size = new System.Drawing.Size(400, 100);
-            this.popupNotifier1.TitleFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.popupNotifier1.TitleText = null;
+            this.popNotifStreams.ContentFont = new System.Drawing.Font("Tahoma", 8F);
+            this.popNotifStreams.ContentText = null;
+            this.popNotifStreams.Image = null;
+            this.popNotifStreams.OptionsMenu = null;
+            this.popNotifStreams.Size = new System.Drawing.Size(400, 100);
+            this.popNotifStreams.TitleFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.popNotifStreams.TitleText = null;
             // 
             // timerCheckNewStream
             // 
             this.timerCheckNewStream.Enabled = true;
             this.timerCheckNewStream.Interval = 10000;
             this.timerCheckNewStream.Tick += new System.EventHandler(this.timerCheckNewStream_Tick);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // MainView
             // 
@@ -190,6 +199,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainView";
             this.Text = "Twitch Alert";
+            this.Resize += new System.EventHandler(this.MainView_Resize);
             this.panelTwitch.ResumeLayout(false);
             this.panelSearch.ResumeLayout(false);
             this.panelSearch.PerformLayout();
@@ -208,9 +218,10 @@
         private System.Windows.Forms.ComboBox cmbSearch;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnStreamsOnline;
-        private NotificationWindow.PopupNotifier popupNotifier1;
+        private NotificationWindow.PopupNotifier popNotifStreams;
         private System.Windows.Forms.Timer timerCheckNewStream;
         private System.Windows.Forms.Button btnStreamsPopular;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
 
     }
 }

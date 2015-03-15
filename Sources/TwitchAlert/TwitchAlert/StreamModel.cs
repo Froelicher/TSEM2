@@ -49,5 +49,11 @@ namespace TwitchAlert
             SearchGames gamesSearch = this.Js.Serialize<SearchGames>(URL_API + "search/games?q=" + request + "&type=suggest");
             return gamesSearch;
         }
+
+        public Streams GetAllInfosStream(string channel_name)
+        {
+            Streams currentStream = this.Js.Serialize<Streams>(URL_API + "streams/" + channel_name);
+            return currentStream;
+        }
     }
 }

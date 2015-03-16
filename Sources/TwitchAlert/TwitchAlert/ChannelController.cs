@@ -67,6 +67,7 @@ namespace TwitchAlert
         public string[,] GetInfosDisplayStreamsOnline()
         {
             this.UsrModel.FillStreamsFollowed();
+            this.UsrModel.FillChannelsFollowed();
             List<Stream> listStream = this.UsrModel.StreamsFollowed;
             string[,] arrayInfosStreams = new string[listStream.Count(), NB_INFOS_STREAM];
 

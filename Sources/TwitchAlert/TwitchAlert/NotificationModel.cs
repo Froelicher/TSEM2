@@ -38,22 +38,32 @@ namespace TwitchAlert
 
         public List<Stream> CheckNewStreamOnline()
         {
-            List<Stream> oldStreamOnline = new List<Stream>(this.StreamOnline);
+            List<Stream> diff = null;
 
-            this.UpdateStreamsOnline();
-
-            List<Stream> diff = new List<Stream>(this.StreamOnline);
-
-            for(int i = 0; i < this.StreamOnline.Count(); i++)
+            if(this.StreamOnline != null)
             {
-                for(int j = 0; j < oldStreamOnline.Count(); j++)
+                List<Stream> oldStreamOnline = new List<Stream>(this.StreamOnline);
+
+                this.UpdateStreamsOnline();
+
+                diff = new List<Stream>(this.StreamOnline);
+
+                for (int i = 0; i < this.StreamOnline.Count(); i++)
                 {
-                    if(this.StreamOnline[i]._id == oldStreamOnline[j]._id)
+                    for (int j = 0; j < oldStreamOnline.Count(); j++)
                     {
-                        diff.Remove(StreamOnline[i]);
+                        if (this.StreamOnline[i]._id == oldStreamOnline[j]._id)
+                        {
+                            diff.Remove(StreamOnline[i]);
+                        }
                     }
                 }
             }
+            else
+            {
+                this.UpdateStreamsOnline();
+            }
+
             return diff;
         }
     }

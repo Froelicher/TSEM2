@@ -11,17 +11,31 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Json;
 using TwitchAlert.TwitchModels;
+using System.Timers;
 
 namespace TwitchAlert
 {
     public partial class MainView : Form
     {
         private UserModel _user;
+        private UserController _usrController;
         private NotificationModel _notifModel;
         private StreamModel _strmModel;
         private NotificationController _notifController;
         private ChannelController _chanController;
         private StreamController _strmController;
+
+        internal UserModel User
+        {
+            get { return _user; }
+            set { _user = value; }
+        }
+
+        internal UserController UsrController
+        {
+            get { return _usrController; }
+            set { _usrController = value; }
+        }
 
         internal StreamController StrmController
         {
@@ -57,37 +71,62 @@ namespace TwitchAlert
         public MainView()
         {
             InitializeComponent();
-            this._user = new UserModel();
-            this._user.AccessToken = "peu0unkvmn16sko1te9mh8ytpm8vhd";
-            this._user.FillStreamsFollowed();
-            this._user.FillChannelsFollowed();
-            this.ChanController = new ChannelController(this, _user);        
+            this.User = new UserModel();
+            this.UsrController = new UserController(this.User, this);
+            this.ChanController = new ChannelController(this, this.User);        
             this.StrmModel = new StreamModel();
-            this.StrmController = new StreamController(this, StrmModel);
-            this.NotifModel = new NotificationModel(_user);
+            this.StrmController = new StreamController(this, this.StrmModel);
+            this.NotifModel = new NotificationModel(this.User);
             this.NotifController = new NotificationController(this, this.NotifModel);
             this.cmbSearch.SelectedIndex = 0;
+            //this.InitTimer();
+        }
+
+        private void InitTimer()
+        {
+            System.Timers.Timer aTimer = new System.Timers.Timer();
+            aTimer.Elapsed += new System.Timers.ElapsedEventHandler(CheckNewStreamOnlineTick);
+            aTimer.Interval = 5000;
+            aTimer.Enabled = true;
+        }
+
+        private void CheckNewStreamOnlineTick(object source, ElapsedEventArgs e)
+        {
+            if (this.UsrController.IsConnected())
+                this.FillNotif();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            LoginView loginView = new LoginView();
-            loginView.Show();
+            if(this.UsrController.IsConnected())
+            {
+                MessageBox.Show("Vous êtes déjà connecté");        
+            }else{
+                LoginView loginView = new LoginView(this, this.User);
+                loginView.Show();
+            }
         }
 
         private void btnStreamsOnline_Click(object sender, EventArgs e)
         {
-            this.DisplayStreamsOnline(this.ChanController.GetInfosDisplayStreamsOnline());
+            if(this.UsrController.IsConnected())
+                this.DisplayStreamsOnline(this.ChanController.GetInfosDisplayStreamsOnline());
+            else
+                MessageBox.Show("Vous devez être connecté");
         }
 
         private void btnChannel_Click(object sender, EventArgs e)
         {
-            this.DisplayChannelsFollowed(this.ChanController.GetInfosDisplayChannels());
+            if (this.UsrController.IsConnected())
+                this.DisplayChannelsFollowed(this.ChanController.GetInfosDisplayChannels());
+            else
+                MessageBox.Show("Vous devez être connecté");
         }
 
         private void timerCheckNewStream_Tick(object sender, EventArgs e)
         {
-            this.FillNotif();
+            if (this.UsrController.IsConnected())
+                this.FillNotif();
         }
 
         private void FillNotif()
@@ -168,8 +207,10 @@ namespace TwitchAlert
                 //CREATE LABEL_TITLE
                 Label title = new Label();
                 title.Location = new Point(15, 10);
+                title.Font = new Font("Microsoft Sans Serif", 9f);
                 title.Text = listStreams[i, 1];
                 title.Size = new Size(400, 20);
+               
 
                 //CREATE LABEL_CHANNEL_NAME
                 Label channel = new Label();
@@ -192,14 +233,20 @@ namespace TwitchAlert
                 //CREATE BTN_FOLLOW
                 Button follow = new Button();
                 follow.Location = new Point(380, 35);
-                follow.Size = new Size(50, 20);
+                follow.Size = new Size(60, 30);
+                follow.BackColor = Color.FromArgb(100, 65, 165);
+                follow.ForeColor = Color.White;
+                follow.FlatStyle = FlatStyle.Flat;
+                follow.FlatAppearance.BorderSize = 0;
 
-                if (!_user.CheckIsFollowed(listStreams[i, 2]))
+                if (!this.UsrController.CheckIsFollowed(listStreams[i, 2]))
                 {
                     follow.Text = "Follow";
                     follow.Click += (s, e) =>
                     {
                         this.ChanController.FollowChannel(listStreams[test, 2]);
+                        follow.Text = "Unfollow";
+                        this.Invalidate();
                     }; 
                 }
                 else
@@ -208,6 +255,8 @@ namespace TwitchAlert
                     follow.Click += (s, e) =>
                     {
                         this.ChanController.UnFollowChannel(listStreams[test, 2]);
+                        follow.Text = "Follow";
+                        this.Invalidate();
                     }; 
                 }
 
@@ -216,9 +265,13 @@ namespace TwitchAlert
                 gPanel.Controls.Add(follow);
                 //CREATE BTN_CHANNEL_VIEW
                 Button play = new Button();
-                play.Location = new Point(380, 105);
-                play.Size = new Size(50, 20);
+                play.Location = new Point(380, 90);
+                play.Size = new Size(60, 30);
                 play.Text = "Play";
+                play.BackColor = Color.FromArgb(100, 65, 165);
+                play.ForeColor = Color.White;
+                play.FlatAppearance.BorderSize = 0;
+                play.FlatStyle = FlatStyle.Flat;
                 play.Click += (s, e) => { ChannelView channelView = new ChannelView(listStreams[test, 2]);
                                           channelView.Show();
                                         };
@@ -290,58 +343,57 @@ namespace TwitchAlert
             }
         }
 
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            if (cmbSearch.SelectedIndex == 0)
+            if(this.UsrController.IsConnected())
             {
-                this.DisplayStreamsSearch(this.StrmController.GetInfosDisplayStreamsSearch(this.tbxSearch.Text), this.tbxSearch.Text);
-            }
+                if (cmbSearch.SelectedIndex == 0)
+                {   
+                    this.DisplayStreamsSearch(this.StrmController.GetInfosDisplayStreamsSearch(this.tbxSearch.Text), this.tbxSearch.Text);
+                }
 
-            if (cmbSearch.SelectedIndex == 1)
+                if (cmbSearch.SelectedIndex == 1)
+                {
+
+                }
+            }
+            else
             {
-
+                MessageBox.Show("Vous devez être connecté");
             }
+            
         }
 
         private void btnStreamsPopular_Click(object sender, EventArgs e)
         {
-            this.DisplayStreamsPopular(this.StrmController.GetInfosDisplayStreams());
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ChannelView channelView = new ChannelView("hearthstonefr");
-            channelView.Show();
+            if(this.UsrController.IsConnected())
+                this.DisplayStreamsPopular(this.StrmController.GetInfosDisplayStreams());
+            else
+                MessageBox.Show("Vous devez être connecté");
         }
 
         private void MainView_Resize(object sender, EventArgs e)
         {
-            notifyIcon1.BalloonTipTitle = "Twitch Alert is reduced";
-            notifyIcon1.BalloonTipText = "Double click to icon to open the main window";
+            IconTwitchAlert.BalloonTipTitle = "Twitch Alert is reduced";
+            IconTwitchAlert.BalloonTipText = "Double click to icon to open the main window";
             
-
             if(FormWindowState.Minimized == this.WindowState)
             {
-                notifyIcon1.Visible = true;
-                notifyIcon1.ShowBalloonTip(500);
+                IconTwitchAlert.Visible = true;
+                IconTwitchAlert.ShowBalloonTip(500);
                 this.Hide();
             }
             else if (FormWindowState.Normal == this.WindowState)
             {
-                notifyIcon1.Visible = false;
+                IconTwitchAlert.Visible = false;
             }
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void IconTwitchAlert_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();
             this.WindowState = FormWindowState.Normal;
         }
+
     }
 }

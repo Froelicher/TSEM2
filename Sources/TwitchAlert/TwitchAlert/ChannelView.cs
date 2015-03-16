@@ -36,11 +36,8 @@ namespace TwitchAlert
             this.ChanController = new ChannelController(this, this.StrmModel);
             string[] infos = this.ChanController.GetAllInfosChannel(channel_name);
             this.CompleteView(infos);
-        }
-
-        private void ChannelView_Load(object sender, EventArgs e)
-        {
-
+            this.lbl_playing.Location = new Point(this.lbl_channel_name.Location.X + 5 + lbl_channel_name.Width, this.lbl_playing.Location.Y);
+            this.lbl_game.Location = new Point(this.lbl_playing.Location.X + 5 + lbl_playing.Width, this.lbl_game.Location.Y);
         }
 
         private void CompleteView(string[] infos)
@@ -48,7 +45,9 @@ namespace TwitchAlert
             Uri uri = new Uri(infos[11] + "/popout", System.UriKind.Absolute);
             this.webChannel.Url = uri;
 
-            this.pbxLogo.Load(infos[3]);
+            if(infos[3] != null)
+                this.pbxLogo.Load(infos[3]);
+
             this.lbl_status.Text = infos[0];
             this.lbl_game.Text = infos[2];
             this.lbl_channel_name.Text = infos[1];

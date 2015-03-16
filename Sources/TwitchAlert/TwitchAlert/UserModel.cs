@@ -7,7 +7,7 @@ using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert
 {
-    class UserModel
+    public class UserModel
     {
         private string _accessToken;
         private JsonSerializer _js;
@@ -51,6 +51,8 @@ namespace TwitchAlert
             get { return _accessToken; }
             set { _accessToken = value;
                   this.FillUser();
+                  this.FillStreamsFollowed();
+                  this.FillChannelsFollowed();
                 }
         }
 
@@ -58,6 +60,17 @@ namespace TwitchAlert
         {
             this.CmdCurl = new Curl();
             this.Js = new JsonSerializer();
+            this.AccessToken = "";
+        }
+
+        public bool IsConnected()
+        {
+            if(this.AccessToken != "")
+            {
+                return true;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -65,7 +78,7 @@ namespace TwitchAlert
         /// </summary>
         public void FillStreamsFollowed()
         {
-            if(this.AccessToken != "")
+            if(this.IsConnected())
             {
                 Streams streamsFollowed = this.CmdCurl.SendRequest<Streams>("https://api.twitch.tv/kraken/streams/followed", "GET", this.AccessToken);
                 this.StreamsFollowed = new List<Stream>(streamsFollowed.streams);
@@ -74,7 +87,7 @@ namespace TwitchAlert
 
         public void FillChannelsFollowed()
         {
-            if(this.AccessToken != "")
+            if (this.IsConnected())
             {
                 Follows channelsFollowed = this.Js.Serialize<Follows>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels");
                 this.ChannelsFollowed = new List<Follow>(channelsFollowed.follows);
@@ -86,7 +99,7 @@ namespace TwitchAlert
         /// </summary>
         private void FillUser()
         {
-            if (this.AccessToken != "")
+            if (this.IsConnected())
             {
                 this.CurrentUser = this.CmdCurl.SendRequest<Users>("https://api.twitch.tv/kraken/user", "GET", this.AccessToken);
             }
@@ -102,11 +115,6 @@ namespace TwitchAlert
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < url.Length; i++)
             {
-                if (url[i] == '=')
-                {
-                    inToken = true;
-                }
-
                 if (inToken)
                 {
                     if (url[i] != '&')
@@ -114,6 +122,12 @@ namespace TwitchAlert
                     else
                         break;
                 }
+
+                if (url[i] == '=')
+                {
+                    inToken = true;
+                }
+
             }
             this.AccessToken = result.ToString();
         }
@@ -125,7 +139,7 @@ namespace TwitchAlert
         /// <param name="channel_name">channel name</param>
         public void FollowChannel(string channel_name)
         {
-            if(this.AccessToken != "")
+            if (this.IsConnected())
             {
                 this.CmdCurl.SendRequest<Follow>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels/" + channel_name, "PUT", this.AccessToken);
                 this.FillStreamsFollowed();
@@ -138,7 +152,7 @@ namespace TwitchAlert
         /// <param name="channel_name"></param>
         public void UnFollowChannel(string channel_name)
         {
-            if(this.AccessToken != "")
+            if (this.IsConnected())
             {
                 this.CmdCurl.SendRequest<Follow>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels/" + channel_name, "DELETE", this.AccessToken);
                 this.FillStreamsFollowed();

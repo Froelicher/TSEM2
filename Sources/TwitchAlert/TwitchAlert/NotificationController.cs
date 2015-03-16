@@ -35,17 +35,24 @@ namespace TwitchAlert
             List<string> result = new List<string>();
             List<Stream> newStream = this.NotifModel.CheckNewStreamOnline();
 
-            if(newStream.Count() != 0)
+            if(newStream != null)
             {
-                for(int i = 0; i < newStream.Count(); i++)
+                if (newStream.Count() != 0)
                 {
-                    result.Add(newStream[i].channel.status);
-                    result.Add(newStream[i].game);
-                    result.Add(newStream[i].channel.name);
-                    result.Add(newStream[i].viewers.ToString());
-                    result.Add(newStream[i].preview.medium);
+                    for (int i = 0; i < newStream.Count(); i++)
+                    {
+                        result.Add(newStream[i].channel.status);
+                        result.Add(newStream[i].game);
+                        result.Add(newStream[i].channel.name);
+                        result.Add(newStream[i].viewers.ToString());
+                        result.Add(newStream[i].preview.medium);
+                    }
+                    return result;
                 }
-                return result;
+                else
+                {
+                    return null;
+                }
             }
             else
             {

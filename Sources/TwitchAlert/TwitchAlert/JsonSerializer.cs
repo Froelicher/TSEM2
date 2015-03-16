@@ -14,12 +14,20 @@ namespace TwitchAlert
     {
         public T Serialize<T>(string url)
         {
-            WebClient wc = new WebClient();
-            string strJson = wc.DownloadString(url);
-            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(T));
-            MemoryStream ms = new MemoryStream(System.Text.ASCIIEncoding.ASCII.GetBytes(strJson));
-            T obj = (T)js.ReadObject(ms);
-            ms.Close();
+            T obj = default(T);
+            try
+            {
+                WebClient wc = new WebClient();
+                string strJson = wc.DownloadString(url);
+                DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(T));
+                MemoryStream ms = new MemoryStream(System.Text.UTF8Encoding.Unicode.GetBytes(strJson));
+                obj = (T)js.ReadObject(ms);
+                ms.Close(); 
+            }
+            catch(WebException e)
+            {
+               
+            }
 
             return obj;
         }

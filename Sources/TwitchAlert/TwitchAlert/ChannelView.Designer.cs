@@ -32,9 +32,8 @@
             this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.lbl_status = new System.Windows.Forms.Label();
             this.lbl_channel_name = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_playing = new System.Windows.Forms.Label();
             this.lbl_game = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -93,13 +92,13 @@
             // 
             // lbl_status
             // 
-            this.lbl_status.AutoSize = true;
             this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_status.Location = new System.Drawing.Point(108, 22);
+            this.lbl_status.Location = new System.Drawing.Point(108, 4);
             this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(417, 31);
+            this.lbl_status.Size = new System.Drawing.Size(791, 71);
             this.lbl_status.TabIndex = 2;
             this.lbl_status.Text = "NOM DU STREAM EN COURS";
+            this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl_channel_name
             // 
@@ -111,15 +110,15 @@
             this.lbl_channel_name.TabIndex = 3;
             this.lbl_channel_name.Text = "Nom de la chaîne";
             // 
-            // label1
+            // lbl_playing
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(247, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 16);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "playing";
+            this.lbl_playing.AutoSize = true;
+            this.lbl_playing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_playing.Location = new System.Drawing.Point(247, 75);
+            this.lbl_playing.Name = "lbl_playing";
+            this.lbl_playing.Size = new System.Drawing.Size(52, 16);
+            this.lbl_playing.TabIndex = 4;
+            this.lbl_playing.Text = "playing";
             // 
             // lbl_game
             // 
@@ -130,17 +129,6 @@
             this.lbl_game.Size = new System.Drawing.Size(86, 16);
             this.lbl_game.TabIndex = 5;
             this.lbl_game.Text = "Nom du jeu";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(807, 71);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 20);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Notification";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -306,17 +294,17 @@
             // 
             // lbl_info_status
             // 
-            this.lbl_info_status.AutoSize = true;
-            this.lbl_info_status.Location = new System.Drawing.Point(98, 736);
+            this.lbl_info_status.Location = new System.Drawing.Point(98, 723);
             this.lbl_info_status.Name = "lbl_info_status";
-            this.lbl_info_status.Size = new System.Drawing.Size(37, 13);
+            this.lbl_info_status.Size = new System.Drawing.Size(252, 44);
             this.lbl_info_status.TabIndex = 25;
             this.lbl_info_status.Text = "Status";
+            this.lbl_info_status.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl_info_viewers
             // 
             this.lbl_info_viewers.AutoSize = true;
-            this.lbl_info_viewers.Location = new System.Drawing.Point(98, 768);
+            this.lbl_info_viewers.Location = new System.Drawing.Point(98, 770);
             this.lbl_info_viewers.Name = "lbl_info_viewers";
             this.lbl_info_viewers.Size = new System.Drawing.Size(58, 13);
             this.lbl_info_viewers.TabIndex = 26;
@@ -453,6 +441,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(911, 831);
             this.Controls.Add(this.lbl_info_language);
             this.Controls.Add(this.lbl_info_broad_language);
@@ -488,9 +477,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lbl_game);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_playing);
             this.Controls.Add(this.lbl_channel_name);
             this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.pbxLogo);
@@ -498,7 +486,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ChannelView";
             this.Text = "1";
-            this.Load += new System.EventHandler(this.ChannelView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -511,9 +498,8 @@
         private System.Windows.Forms.PictureBox pbxLogo;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.Label lbl_channel_name;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_playing;
         private System.Windows.Forms.Label lbl_game;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

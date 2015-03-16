@@ -99,6 +99,7 @@
     <Compile Include="TwitchModels\Users.cs" />
     <Compile Include="TwitchModels\Video.cs" />
     <Compile Include="TwitchModels\Videos.cs" />
+    <Compile Include="UserController.cs" />
     <Compile Include="UserModel.cs" />
     <EmbeddedResource Include="ChannelView.resx">
       <DependentUpon>ChannelView.cs</DependentUpon>

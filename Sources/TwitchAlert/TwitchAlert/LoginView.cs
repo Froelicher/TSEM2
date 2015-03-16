@@ -12,20 +12,33 @@ namespace TwitchAlert
 {
     public partial class LoginView : Form
     {
+        private UserController _usrController;
+        private MainView _mView;
 
-        public LoginView() : this(null)
+        public MainView MView
+        {
+            get { return _mView; }
+            set { _mView = value; }
+        }
+
+        internal UserController UsrController
+        {
+            get { return _usrController; }
+            set { _usrController = value; }
+        }
+
+
+        public LoginView() : this(null, null)
+        {
+
+        }
+
+        public LoginView(MainView mainView, UserModel model)
         {
             InitializeComponent();
-        }
-
-        public LoginView(MainView mainView)
-        {
-
-        }
-
-        private void LoginView_Load(object sender, EventArgs e)
-        {
-           
+            this.MView = mainView;
+            this.timer_checkUrl.Enabled = true;
+            this.UsrController = new UserController(model, this);
         }
 
         private void wbLogin_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -50,8 +63,14 @@ namespace TwitchAlert
             string search = "access_token";
             if(wbLogin.Url.ToString().IndexOf(search) != -1)
             {
-
+                this.UsrController.FetchAccessToken(wbLogin.Url.ToString());
+                this.Close();
             }
+        }
+
+        private void LoginView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.timer_checkUrl.Enabled = false;
         }   
     }
 }

@@ -251,7 +251,7 @@ namespace NotificationWindow
             HeaderHeight = 9;
             ShowCloseButton = true;
             ShowOptionsButton = false;
-            Delay = 3000;
+            Delay = 10000;
             AnimationInterval = 10;
             AnimationDuration = 1000;
             Size = new Size(400, 100);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TwitchAlert.TwitchModels;
 
@@ -36,6 +37,7 @@ namespace TwitchAlert
             this.StreamOnline = this.User.StreamsFollowed;
         }
 
+
         public List<Stream> CheckNewStreamOnline()
         {
             List<Stream> diff = null;
@@ -66,5 +68,6 @@ namespace TwitchAlert
 
             return diff;
         }
+
     }
 }

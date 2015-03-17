@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Runtime.Serialization.Json;
 using TwitchAlert.TwitchModels;
 using System.Timers;
+using System.Threading;
 
 namespace TwitchAlert
 {
@@ -24,6 +25,21 @@ namespace TwitchAlert
         private NotificationController _notifController;
         private ChannelController _chanController;
         private StreamController _strmController;
+        private Thread _checkThread;
+        private System.Timers.Timer _timerCheck;
+
+        public System.Timers.Timer TimerCheck
+        {
+            get { return _timerCheck; }
+            set { _timerCheck = value; }
+        }
+
+
+        public Thread CheckThread
+        {
+            get { return _checkThread; }
+            set { _checkThread = value; }
+        }
 
         internal UserModel User
         {
@@ -67,7 +83,6 @@ namespace TwitchAlert
             set { _notifModel = value; }
         }
 
-
         public MainView()
         {
             InitializeComponent();
@@ -79,21 +94,26 @@ namespace TwitchAlert
             this.NotifModel = new NotificationModel(this.User);
             this.NotifController = new NotificationController(this, this.NotifModel);
             this.cmbSearch.SelectedIndex = 0;
-            //this.InitTimer();
+
+            this.TimerCheck = new System.Timers.Timer();
+            this.TimerCheck.Enabled = true;
+
+            this.CheckThread = new Thread(this.TimerCheckNewStream);
+            this.CheckThread.Start();
+            
         }
 
-        private void InitTimer()
+        private void TimerCheckNewStream()
         {
-            System.Timers.Timer aTimer = new System.Timers.Timer();
-            aTimer.Elapsed += new System.Timers.ElapsedEventHandler(CheckNewStreamOnlineTick);
-            aTimer.Interval = 5000;
-            aTimer.Enabled = true;
+            this.TimerCheck.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            this.TimerCheck.Interval = 5000;
         }
 
-        private void CheckNewStreamOnlineTick(object source, ElapsedEventArgs e)
+        private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             if (this.UsrController.IsConnected())
                 this.FillNotif();
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -125,38 +145,40 @@ namespace TwitchAlert
 
         private void timerCheckNewStream_Tick(object sender, EventArgs e)
         {
-            if (this.UsrController.IsConnected())
-                this.FillNotif();
+            
         }
 
         private void FillNotif()
         {
-            List<string> listInfo = this.NotifController.CheckNewStreamOnline();
-
-            if (listInfo != null)
+            List<string> listInfo = null;
+            listInfo = this.NotifController.CheckNewStreamOnline();
+            this.Invoke((MethodInvoker)delegate
             {
-                popNotifStreams.TitleText = listInfo[0];
-                popNotifStreams.ContentText = listInfo[1] + " \n" + listInfo[2] + " \n" + listInfo[3];
-                popNotifStreams.ContentPadding = new Padding(1);
-                popNotifStreams.TitlePadding = new Padding(1);
-                WebClient wc = new WebClient();
-                byte[] bytes = wc.DownloadData(listInfo[4]);
-                MemoryStream ms = new MemoryStream(bytes);
-                System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
-
-                //Redimmensionnement pour une image de base de 320x180
-                System.Drawing.Size sizeimg = new System.Drawing.Size(150, 82);
-
-                popNotifStreams.Image = img;
-                popNotifStreams.ImagePadding = new Padding(5);
-                popNotifStreams.ImageSize = sizeimg;
-                popNotifStreams.Click += (s, e) =>
+                if (listInfo != null)
                 {
-                    ChannelView channelView = new ChannelView(listInfo[2]);
-                    channelView.Show();
-                }; 
-                popNotifStreams.Popup();
-            }
+                    popNotifStreams.TitleText = listInfo[0];
+                    popNotifStreams.ContentText = listInfo[1] + " \n" + listInfo[2] + " \n" + listInfo[3];
+                    popNotifStreams.ContentPadding = new Padding(1);
+                    popNotifStreams.TitlePadding = new Padding(1);
+                    WebClient wc = new WebClient();
+                    byte[] bytes = wc.DownloadData(listInfo[4]);
+                    MemoryStream ms = new MemoryStream(bytes);
+                    System.Drawing.Image img = System.Drawing.Image.FromStream(ms);
+
+                    //Redimmensionnement pour une image de base de 320x180
+                    System.Drawing.Size sizeimg = new System.Drawing.Size(150, 82);
+
+                    popNotifStreams.Image = img;
+                    popNotifStreams.ImagePadding = new Padding(5);
+                    popNotifStreams.ImageSize = sizeimg;
+                    popNotifStreams.Click += (s, e) =>
+                    {
+                        ChannelView channelView = new ChannelView(listInfo[2]);
+                        channelView.Show();
+                    };
+                    popNotifStreams.Popup();
+                }
+            });
         }
 
         private void DisplayStreamsOnline(string[,] listStream)

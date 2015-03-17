@@ -46,7 +46,7 @@
             // 
             // timer_checkUrl
             // 
-            this.timer_checkUrl.Interval = 1000;
+            this.timer_checkUrl.Interval = 500;
             this.timer_checkUrl.Tick += new System.EventHandler(this.timer_checkUrl_Tick);
             // 
             // LoginView

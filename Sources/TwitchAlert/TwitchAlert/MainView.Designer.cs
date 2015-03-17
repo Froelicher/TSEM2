@@ -41,7 +41,6 @@
             this.cmbSearch = new System.Windows.Forms.ComboBox();
             this.panelStreams = new System.Windows.Forms.Panel();
             this.popNotifStreams = new NotificationWindow.PopupNotifier();
-            this.timerCheckNewStream = new System.Windows.Forms.Timer(this.components);
             this.IconTwitchAlert = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelTwitch.SuspendLayout();
             this.panelSearch.SuspendLayout();
@@ -179,12 +178,6 @@
             this.popNotifStreams.TitleFont = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
             this.popNotifStreams.TitleText = null;
             // 
-            // timerCheckNewStream
-            // 
-            this.timerCheckNewStream.Enabled = true;
-            this.timerCheckNewStream.Interval = 10000;
-            this.timerCheckNewStream.Tick += new System.EventHandler(this.timerCheckNewStream_Tick);
-            // 
             // IconTwitchAlert
             // 
             this.IconTwitchAlert.Icon = ((System.Drawing.Icon)(resources.GetObject("IconTwitchAlert.Icon")));
@@ -224,7 +217,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnStreamsOnline;
         private NotificationWindow.PopupNotifier popNotifStreams;
-        private System.Windows.Forms.Timer timerCheckNewStream;
         private System.Windows.Forms.Button btnStreamsPopular;
         private System.Windows.Forms.NotifyIcon IconTwitchAlert;
 

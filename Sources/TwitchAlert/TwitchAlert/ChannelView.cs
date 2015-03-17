@@ -42,8 +42,12 @@ namespace TwitchAlert
 
         private void CompleteView(string[] infos)
         {
-            Uri uri = new Uri(infos[11] + "/popout", System.UriKind.Absolute);
-            this.webChannel.Url = uri;
+            Uri uri = null;
+            if(infos[11] != null)
+                uri = new Uri(infos[11] + "/popout", System.UriKind.Absolute);
+
+            if(uri != null)
+                this.webChannel.Url = uri;
 
             if(infos[3] != null)
                 this.pbxLogo.Load(infos[3]);

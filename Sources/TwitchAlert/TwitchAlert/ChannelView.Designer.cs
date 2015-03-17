@@ -77,7 +77,7 @@
             this.webChannel.MinimumSize = new System.Drawing.Size(20, 20);
             this.webChannel.Name = "webChannel";
             this.webChannel.ScrollBarsEnabled = false;
-            this.webChannel.Size = new System.Drawing.Size(888, 586);
+            this.webChannel.Size = new System.Drawing.Size(888, 593);
             this.webChannel.TabIndex = 0;
             this.webChannel.Url = new System.Uri("", System.UriKind.Relative);
             // 

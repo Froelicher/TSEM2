@@ -26,14 +26,21 @@
 \contentsline {subsection}{\numberline {8.2}Vue d\'etail d'une cha\IeC {\^\i }ne}{11}{subsection.8.2}
 \contentsline {part}{IV\hspace {1em}Analyse organique}{12}{part.4}
 \contentsline {section}{\numberline {9}Diagramme de classe}{12}{section.9}
-\contentsline {section}{\numberline {10}API Twitch (Twitch.Net)}{13}{section.10}
-\contentsline {subsection}{\numberline {10.1}OAuth 2.0}{13}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Site d'autorisation}{14}{subsection.10.2}
-\contentsline {subsection}{\numberline {10.3}cURL}{14}{subsection.10.3}
-\contentsline {section}{\numberline {11}Tests}{15}{section.11}
-\contentsline {section}{\numberline {12}Conclusion}{15}{section.12}
-\contentsline {section}{\numberline {13}Glossaire}{15}{section.13}
-\contentsline {section}{\numberline {14}Annexes}{15}{section.14}
-\contentsline {subsection}{\numberline {14.1}Planification}{15}{subsection.14.1}
-\contentsline {subsubsection}{\numberline {14.1.1}Planification pr\'evisionnelle}{15}{subsubsection.14.1.1}
-\contentsline {subsubsection}{\numberline {14.1.2}Planning r\'eel}{16}{subsubsection.14.1.2}
+\contentsline {subsection}{\numberline {9.1}Model}{12}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Controllers}{13}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Views}{14}{subsubsection.9.2.1}
+\contentsline {section}{\numberline {10}API Twitch (Twitch.Net)}{15}{section.10}
+\contentsline {subsection}{\numberline {10.1}OAuth 2.0}{15}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Site d'autorisation}{16}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.3}cURL}{16}{subsection.10.3}
+\contentsline {section}{\numberline {11}Fonctions}{17}{section.11}
+\contentsline {subsection}{\numberline {11.1}Affichage}{17}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Notification}{17}{subsection.11.2}
+\contentsline {subsubsection}{\numberline {11.2.1}V\'erification de nouveaux streams en ligne}{17}{subsubsection.11.2.1}
+\contentsline {section}{\numberline {12}Tests}{18}{section.12}
+\contentsline {section}{\numberline {13}Conclusion}{18}{section.13}
+\contentsline {section}{\numberline {14}Glossaire}{18}{section.14}
+\contentsline {section}{\numberline {15}Annexes}{18}{section.15}
+\contentsline {subsection}{\numberline {15.1}Planification}{18}{subsection.15.1}
+\contentsline {subsubsection}{\numberline {15.1.1}Planification pr\'evisionnelle}{18}{subsubsection.15.1.1}
+\contentsline {subsubsection}{\numberline {15.1.2}Planning r\'eel}{19}{subsubsection.15.1.2}

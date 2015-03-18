@@ -28,17 +28,17 @@ namespace TwitchAlert
         }
 
 
-        public LoginView() : this(null, null)
+        public LoginView() : this(null)
         {
 
         }
 
-        public LoginView(MainView mainView, UserModel model)
+        public LoginView(MainView mainView)
         {
             InitializeComponent();
             this.MView = mainView;
             this.timer_checkUrl.Enabled = true;
-            this.UsrController = new UserController(model, this);
+            this.UsrController = new UserController(this.MView.User, this);
         }
 
         private void wbLogin_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

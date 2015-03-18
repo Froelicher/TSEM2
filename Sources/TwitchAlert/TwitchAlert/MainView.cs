@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.Serialization.Json;
-using TwitchAlert.TwitchModels;
 using System.Timers;
 using System.Threading;
 
@@ -122,7 +115,7 @@ namespace TwitchAlert
             {
                 MessageBox.Show("Vous êtes déjà connecté");        
             }else{
-                LoginView loginView = new LoginView(this, this.User);
+                LoginView loginView = new LoginView(this);
                 loginView.Show();
             }
         }

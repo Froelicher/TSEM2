@@ -37,25 +37,34 @@ namespace TwitchAlert
             this.StreamOnline = this.User.StreamsFollowed;
         }
 
-
+        /// <summary>
+        /// Check the new online stream
+        /// </summary>
+        /// <returns>list of new online stream</returns>
         public List<Stream> CheckNewStreamOnline()
         {
+			//List of new streams online
             List<Stream> diff = null;
 
             if(this.StreamOnline != null)
             {
+				//Create a new list with the current online streams
                 List<Stream> oldStreamOnline = new List<Stream>(this.StreamOnline);
-
+				
+				//Update the current online streams
                 this.UpdateStreamsOnline();
-
+				
+				//Create a new list with the current online streams
                 diff = new List<Stream>(this.StreamOnline);
-
+				
+				//Compare the two list
                 for (int i = 0; i < this.StreamOnline.Count(); i++)
                 {
                     for (int j = 0; j < oldStreamOnline.Count(); j++)
                     {
                         if (this.StreamOnline[i]._id == oldStreamOnline[j]._id)
                         {
+							//remove if the current stream is in the old list stream
                             diff.Remove(StreamOnline[i]);
                         }
                     }
@@ -65,7 +74,6 @@ namespace TwitchAlert
             {
                 this.UpdateStreamsOnline();
             }
-
             return diff;
         }
 

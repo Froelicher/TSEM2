@@ -12,15 +12,6 @@ namespace TwitchAlert
 {
     public partial class ChannelView : Form
     {
-
-        private StreamModel _strmModel;
-
-        internal StreamModel StrmModel
-        {
-            get { return _strmModel; }
-            set { _strmModel = value; }
-        }
-
         private ChannelController _chanController;
 
         internal ChannelController ChanController
@@ -32,8 +23,8 @@ namespace TwitchAlert
         public ChannelView(string channel_name)
         {
             InitializeComponent();
-            this.StrmModel = new StreamModel();
-            this.ChanController = new ChannelController(this, this.StrmModel);
+            StreamModel strmModel = new StreamModel();
+            this.ChanController = new ChannelController(this, strmModel);
             string[] infos = this.ChanController.GetAllInfosChannel(channel_name);
             this.CompleteView(infos);
             this.lbl_playing.Location = new Point(this.lbl_channel_name.Location.X + 5 + lbl_channel_name.Width, this.lbl_playing.Location.Y);

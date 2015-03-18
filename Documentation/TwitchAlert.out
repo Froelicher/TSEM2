@@ -18,28 +18,32 @@
 \BOOKMARK [0][-]{part.3}{III Analyse fonctionnelle}{}% 18
 \BOOKMARK [1][-]{section.4}{Gestion des chaines}{part.3}% 19
 \BOOKMARK [1][-]{section.5}{Recherche d'une chaine}{part.3}% 20
-\BOOKMARK [1][-]{section.6}{Ajout d'une cha\356ne}{part.3}% 21
+\BOOKMARK [1][-]{section.6}{Suivre une cha\356ne}{part.3}% 21
 \BOOKMARK [1][-]{section.7}{Gestion des notifications}{part.3}% 22
 \BOOKMARK [1][-]{section.8}{Interface homme-machine}{part.3}% 23
 \BOOKMARK [2][-]{subsection.8.1}{Vue principale}{section.8}% 24
 \BOOKMARK [2][-]{subsection.8.2}{Vue d\351tail d'une cha\356ne}{section.8}% 25
-\BOOKMARK [0][-]{part.4}{IV Analyse organique}{}% 26
-\BOOKMARK [1][-]{section.9}{Diagramme de classe}{part.4}% 27
-\BOOKMARK [2][-]{subsection.9.1}{Model}{section.9}% 28
-\BOOKMARK [2][-]{subsection.9.2}{Controllers}{section.9}% 29
-\BOOKMARK [3][-]{subsubsection.9.2.1}{Views}{subsection.9.2}% 30
-\BOOKMARK [1][-]{section.10}{API Twitch \(Twitch.Net\)}{part.4}% 31
-\BOOKMARK [2][-]{subsection.10.1}{OAuth 2.0}{section.10}% 32
-\BOOKMARK [2][-]{subsection.10.2}{Site d'autorisation}{section.10}% 33
-\BOOKMARK [2][-]{subsection.10.3}{cURL}{section.10}% 34
-\BOOKMARK [1][-]{section.11}{Fonctions}{part.4}% 35
-\BOOKMARK [2][-]{subsection.11.1}{Affichage}{section.11}% 36
-\BOOKMARK [2][-]{subsection.11.2}{Notification}{section.11}% 37
-\BOOKMARK [3][-]{subsubsection.11.2.1}{V\351rification de nouveaux streams en ligne}{subsection.11.2}% 38
-\BOOKMARK [1][-]{section.12}{Tests}{part.4}% 39
-\BOOKMARK [1][-]{section.13}{Conclusion}{part.4}% 40
-\BOOKMARK [1][-]{section.14}{Glossaire}{part.4}% 41
-\BOOKMARK [1][-]{section.15}{Annexes}{part.4}% 42
-\BOOKMARK [2][-]{subsection.15.1}{Planification}{section.15}% 43
-\BOOKMARK [3][-]{subsubsection.15.1.1}{Planification pr\351visionnelle}{subsection.15.1}% 44
-\BOOKMARK [3][-]{subsubsection.15.1.2}{Planning r\351el}{subsection.15.1}% 45
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Vue de connexion}{subsection.8.2}% 26
+\BOOKMARK [0][-]{part.4}{IV Analyse organique}{}% 27
+\BOOKMARK [1][-]{section.9}{Diagramme de classe}{part.4}% 28
+\BOOKMARK [2][-]{subsection.9.1}{Model}{section.9}% 29
+\BOOKMARK [2][-]{subsection.9.2}{Controllers}{section.9}% 30
+\BOOKMARK [3][-]{subsubsection.9.2.1}{Views}{subsection.9.2}% 31
+\BOOKMARK [1][-]{section.10}{API Twitch}{part.4}% 32
+\BOOKMARK [2][-]{subsection.10.1}{R\351cup\351ration des donn\351es}{section.10}% 33
+\BOOKMARK [2][-]{subsection.10.2}{OAuth 2.0}{section.10}% 34
+\BOOKMARK [2][-]{subsection.10.3}{cURL}{section.10}% 35
+\BOOKMARK [1][-]{section.11}{Site d'autorisation et de connexion}{part.4}% 36
+\BOOKMARK [1][-]{section.12}{Affichage}{part.4}% 37
+\BOOKMARK [2][-]{subsection.12.1}{Pop-up de notification}{section.12}% 38
+\BOOKMARK [2][-]{subsection.12.2}{Flux vid\351o}{section.12}% 39
+\BOOKMARK [1][-]{section.13}{Notification}{part.4}% 40
+\BOOKMARK [2][-]{subsection.13.1}{V\351rification de nouveaux streams en ligne}{section.13}% 41
+\BOOKMARK [3][-]{subsubsection.13.1.1}{Multi-Threading}{subsection.13.1}% 42
+\BOOKMARK [1][-]{section.14}{Tests}{part.4}% 43
+\BOOKMARK [1][-]{section.15}{Conclusion}{part.4}% 44
+\BOOKMARK [1][-]{section.16}{Glossaire}{part.4}% 45
+\BOOKMARK [1][-]{section.17}{Annexes}{part.4}% 46
+\BOOKMARK [2][-]{subsection.17.1}{Planification}{section.17}% 47
+\BOOKMARK [3][-]{subsubsection.17.1.1}{Planification pr\351visionnelle}{subsection.17.1}% 48
+\BOOKMARK [3][-]{subsubsection.17.1.2}{Planning r\351el}{subsection.17.1}% 49

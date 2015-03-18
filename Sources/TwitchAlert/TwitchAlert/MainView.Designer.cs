@@ -181,7 +181,7 @@
             // IconTwitchAlert
             // 
             this.IconTwitchAlert.Icon = ((System.Drawing.Icon)(resources.GetObject("IconTwitchAlert.Icon")));
-            this.IconTwitchAlert.Text = "notifyIcon1";
+            this.IconTwitchAlert.Text = "Twitch Alert";
             this.IconTwitchAlert.Visible = true;
             this.IconTwitchAlert.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.IconTwitchAlert_MouseDoubleClick);
             // 
@@ -195,6 +195,7 @@
             this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.panelTwitch);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainView";
             this.Text = "Twitch Alert";
             this.Resize += new System.EventHandler(this.MainView_Resize);

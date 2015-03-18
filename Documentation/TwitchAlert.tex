@@ -152,11 +152,11 @@ La lecture des flux vidéos se fait directement sur le site Twitch.
 \section{Gestion des chaines}
 La gestion des chaines à pour but de gérer les différentes chaîne. Elle se compose comme ceci :
 \begin{itemize}
-\item Liste des streams en ligne et hors-ligne
-\item Détail d'une chaine Twitch
+\item Liste des chaînes en ligne et hors-ligne
+\item Détail d'une chaîne Twitch
 \end{itemize}
-La liste des streams en ligne affiche les streams que l'utilisateur suit et qui sont actuellement en ligne, c'est-à-dire que la chaîne diffuse du flux vidéo.\\
-La liste des streams hors-ligne affiche les streams que l'utilisateur suit et qui sont actuellement hors-ligne. Les différentes options de configuration de chaque stream sont accessible depuis ces liste. \\
+La liste des chaînes en ligne affiche les chaînes que l'utilisateur suit et qui sont actuellement en ligne, c'est-à-dire que la chaîne diffuse du flux vidéo en direct.\\
+La liste des chaînes hors-ligne affiche les chaînes que l'utilisateur suit et qui sont actuellement hors-ligne. Les différentes options de configuration de chaque chaînes sont accessible depuis ces liste. \\
 Le détail d'une chaîne Twitch consiste à afficher toutes les informations concernant une chaîne Twitch, en effet, c'est depuis là que l'utilisateur peut visualiser le stream de la chaine, toutes les fonctions de bases de Twitch pour une chaine sont reprisent ici.
 
 \section{Recherche d'une chaine}
@@ -168,9 +168,9 @@ Il y a différente manière de rechercher une chaine sur Twitch :
 \end{itemize}
 L'application reprend les mêmes filtres que le site Twitch.
 
-\section{Ajout d'une chaîne}
-L'ajour d'une chaine Twitch se fait directement depuis le détail d'une chaine ou depuis les résultats d'une recherche. Le terme "Ajout" signifie que l'on ajoute la chaîne à la liste des Suivis de l'utilisateur courant.
-L'ajout se fait également dans le compte Twitch de l'utilisateur connecté, il aura une chaîne en plus dans ça liste de suivis.
+\section{Suivre une chaîne}
+Suivre une chaîne Twitch permet d'être notifié par e-mail lorsque la chaîne commence une diffusion en direct. La fonction "Suivre" de mon application permet de suivre une chaîne et ainsi d'être notifié lorsqu'elle commence une nouvelle diffusion en direct.
+Pour utiliser cette fonction il faut obligatoirement être connecté à Twitch.
 
 \section{Gestion des notifications}
 La gestion des notifications à pour but de gérer les notifications d'un stream lorsqu'il démarre.  
@@ -217,6 +217,9 @@ La réduction de la fenêtre se fait normalement.
 \item Bouton pour suivre ou ne plus suivre la chaîne Twitch en question, la coche Notification s'affiche uniquement si l'utilisateur suit la chaîne et permet de recevoir ou pas les notifications de cette chaîne. 
 \end{enumerate}
 
+\subsubsection{Vue de connexion}
+
+
 \newpage
 \part{Analyse organique}
 \section{Diagramme de classe}
@@ -243,9 +246,11 @@ La classe StreamModel contient les méthodes retournant toutes les informations c
 \end{center}
 
 \newpage
-\section{API Twitch (Twitch.Net)}
-L'API Twitch sert à récupérer les différentes informations d'un flux vidéo sur Twitch. Elle utilise un lien URL pour retrouver toutes les informations d'un stream : \begin{center}https://api.twitch.tv/kraken/channels/[nom de la chaîne Twitch]\end{center}
-Toutes les informations que l'API appelle se fait depuis cette page qui est formatée en JSON\footnote{JavaScript Object Notation}.
+\section{API Twitch}
+L'API Twitch sert à récupérer les différentes informations d'un flux vidéo sur Twitch et à envoyé des requêtes de modification de compte Twitch\\
+Elle utilise un lien URL pour retrouver toutes les informations :  \begin{center}https://api.twitch.tv/kraken/\end{center}
+Afin de spécifié quelles informations vont être retourné par l'API, on complète la suite de l'URL. Par exemple, pour retourner les informations d'une chaîne Twitch : \begin{center}https://api.twitch.tv/kraken/channels/[nom de la chaîne Twitch]\end{center}
+Toutes les informations que l'API retourne se fait depuis cette page et les informations reçus sont formatée en JSON\footnote{JavaScript Object Notation}.
 
 L'API est composé de cette manière :
 \begin{itemize}
@@ -260,6 +265,53 @@ L'API est composé de cette manière :
 \item Users : Informations concernant un utilisateur
 \item Videos : Informations concernant les vidéos de la chaine Twitchs
 \end{itemize}
+
+L'utilisation d'une application Twitch doit être validé sur le compte d'un utilisateur. En effet, avant de pouvoir utiliser un compte Twitch sur une application externe à Twitch, il faut que l'utilisateur autorise cette utilisation.
+
+\subsection{Récupération des données}
+Afin de récupérer les données reçu sur la page web de l'API, j'ai créer des classes "type" qui reçoivent les données de Twitch.
+\begin{center}
+\includegraphics[scale=0.8]{img/twitchmodels.png}
+\end{center}
+Ces classes ne sont composée que de propriétés et n'ont pas de méthodes, chaque propriété est une donnée reçu depuis l'API. Pour spécifié que cette classe est une classe qui recevra des données sérialisé, il faut spécifié la classe en \textit{"[DataContract]"} et les propriétés en \textit{"[DataMember]"}.\\
+
+\newpage
+Pour sérialiser les données reçues, j'ai créer une méthode générique qui retourne un objet de type générique. En effet, il faut spécifier lors de l'appel de la fonction de quel type est le résultat de la requête à l'API.\\
+Celle-ci récupère les informations, formatée en JSON, reçues depuis la page web de l'API et les sérialise dans la classe type spécifié lors de l'appel.
+
+\begin{lstlisting}
+        /// <summary>
+        /// Serialize a Json result
+        /// </summary>
+        /// <typeparam name="T">Generic type</typeparam>
+        /// <param name="url">url for get the result</param>
+        /// <returns>variable with a generic type</returns>
+        public T Serialize<T>(string url)
+        {
+            //Create a new generic object
+            T obj = default(T);
+            try
+            {
+                WebClient wc = new WebClient();
+                //Download the result in a string
+                string strJson = wc.DownloadString(url);
+
+                //Serialize the result
+                DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(T));
+                MemoryStream ms = new MemoryStream(System.Text.UTF8Encoding.Unicode.GetBytes(strJson));
+                
+                //Read and add to generic object the result
+                obj = (T)js.ReadObject(ms);
+                ms.Close(); 
+            }
+            catch(WebException e)
+            {
+               
+            }
+            return obj;
+        }
+\end{lstlisting}
+
 
 \subsection{OAuth 2.0}
 Pour l'authentification d'un utilisateur Twitch sur une application externe, l'API utilise le protocole \textbf{OAuth 2.0}, en effet, ce protocole permet d'obtenir un accès limité à un service via HTTP par le biais d'une autorisation.
@@ -297,11 +349,7 @@ La demande se fait de la sorte :
 \includegraphics[scale=0.8]{img/SchemaOAuth2.png}
 \end{center}
 
-\subsection{Site d'autorisation}
-Lorsqu'un utilisateur veut se connecter et ainsi autoriser le compte à utiliser mon application, celui-ci est redirigé vers un site internet. Ce site internet que l'on à accès via : \url{http://froelicher.github.io/TwitchAlert/}. Ce site a été mis en ligne par moi-même mais le code a été pris de l'exemple donné par Twitch dans la documentation de OAuth 2.0. \\
-C'est également sur ce site que l'on récupère le token dans l'URL.\\
-
-Pour la mise en ligne du site, je me suis servi du service proposé par GitHub : GitHub Pages. Ce service permet d'héberger un site Web sur un dépôt Github et automatiquement, votre site web est en ligne.
+\newpage
 
 \subsection{cURL}
 \textbf{C}lient \textbf{URL} \textbf{R}equest \textbf{L}ibrary est une interface en ligne de commande. Elle permet de récupérer des données d'une ressource accessible par réseau. On désigne la ressource à partir d'une URL.
@@ -311,20 +359,87 @@ Pour la mise en ligne du site, je me suis servi du service proposé par GitHub : 
 \end{center}
 Ci-dessus un exemple de requête envoyée pour récupérer les données d'une ressource.
 
-Dans notre cas, nous envoyons une requête de type "GET" pour récupérer par exemple les informations d'une chaîne puis on reçois les données.\\
-L'écriture peut se faire en utilisant les commandes "PUT" ou "POST".
+Dans notre cas, nous envoyons une requête de type "GET" pour récupérer par exemple les informations d'une chaîne Twitch puis on reçois les données.\\
+L'écriture peut se faire en utilisant les commandes "PUT" ou "POST".\\
 Les différents type de requêtes :
+\vspace{2mm}
 \begin{itemize}
 \item GET
 \item POST
 \item PUT
 \item DELETE
 \end{itemize}
+\vspace{2mm}
+Pour envoyer des commandes cURL à la destination souhaitée j'ai créer une classe permettant de d'envoyer une commande et d'y recevoir la réponse. Afin d'avoir une méthode qui renvoie le bon type suivant la ressource demandée, j'ai utilisé le type générique de C\#.\\
+C'est lors de l'appel de la méthode que l'on spécifie de quel type est la valeur de retour.
 
-\section{Fonctions}
-\subsection{Affichage}
-\subsection{Notification}
-\subsubsection{Vérification de nouveaux streams en ligne}
+\begin{lstlisting}
+        /// <summary>
+        /// Send a request http with cURL
+        /// </summary>
+        /// <typeparam name="T">Return generic type</typeparam>
+        /// <param name="urlRequest">request url</param>
+        /// <param name="p_method">method to use</param>
+        /// <param name="p_acces_token">access token for authentificated request</param>
+        /// <returns></returns>
+        public T SendRequest<T>(string urlRequest, string p_method, string p_acces_token)
+        {
+            try
+            {
+                //Create a new http request
+                var httpWebRequest = (HttpWebRequest)WebRequest.Create(urlRequest);
+
+                //Init the http request
+                httpWebRequest.ContentType = "application/json";
+                httpWebRequest.Accept = "application/vnd.twitchtv.v3+json";
+                httpWebRequest.Method = p_method;
+                httpWebRequest.Headers.Add("Authorization: OAuth " + p_acces_token);
+                if (p_method == "PUT")
+                    httpWebRequest.ContentLength = 0;
+
+                //Create a http response
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+                //Read the response
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    //Add to the generics variable the result
+                    T answer = JsonConvert.DeserializeObject<T>(streamReader.ReadToEnd());
+                    return answer;
+                }
+            }
+            catch (WebException e)
+            {
+                return default(T);
+            }
+        }
+\end{lstlisting}
+
+\section{Site d'autorisation et de connexion}
+Lorsqu'un utilisateur veut se connecter et ainsi autoriser le compte à utiliser mon application, celui-ci est redirigé vers un site internet. Ce site internet que l'on à accès via : \url{http://froelicher.github.io/TwitchAlert/} a été mis en ligne par moi-même mais le code a été pris de l'exemple donné par Twitch dans la documentation de OAuth 2.0. \\
+C'est également sur ce site que l'on récupère le token dans l'URL.\\
+
+Pour la mise en ligne du site, je me suis servi du service proposé par GitHub : GitHub Pages. Ce service permet d'héberger un site Web sur un dépôt Github et automatiquement, votre site web est en ligne.\\
+
+Pour ne pas s'attarder sur la programmation d'une connexion à Twitch, j'ai utilisé l'exemple donné dans la documentation du SDK JavaScript de Twitch. En effet, elle fournit une page web permettant l'autorisation d'une application sur un compte Twitch et la connexion à Twitch.
+\url{https://github.com/justintv/twitch-js-sdk}.
+
+\section{Affichage}
+\subsection{Pop-up de notification}
+Le composant externe "PopopNotifier" a été utilisé pour afficher un pop-up lorsqu'une nouvelle diffusion commence. Ce composant vient du web : \url{http://www.codeproject.com/Articles/277584/Notification-Window}.\\
+Pour rendre le composant plus attrayant et adapté à mon interface homme-machine j'ai modifié certains éléments graphique à l'interne du composant.
+
+Les différentes informations affichées : Nom du stream; nom de la chaîne Twitch; nom du jeu; nombre de spectateurs;
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{img/screenPopup.png}
+\end{center}
+
+\subsection{Flux vidéo}
+L'affichage du flux vidéo à l'intérieur d'une Windows Form ce fait grâce au composant "WebBrowser". En effet, Twitch dispose d'une URL qui affiche uniquement le lecteur de flux vidéo, j'affiche donc le contenu de cette page web dans le WebBrowser, ainsi je n'ai que le lecteur vidéo.
+
+\section{Notification}
+\subsection{Vérification de nouveaux streams en ligne}
 Afin de vérifier si des streams commencent à diffuser, j'ai mis en place un timer qui va vérifier si un nouveau stream a commencé.
 La méthode CheckNewStreamOnline() de la classe NotificationModel sert à vérifier si une nouvelle diffusion en direct commence, elle procède ainsi :
 
@@ -371,9 +486,17 @@ La méthode CheckNewStreamOnline() de la classe NotificationModel sert à vérifier
 \end{lstlisting}
 
 \subsubsection{Multi-Threading}
-Le coût en ressources d'un \textit{timer} venant de la vue ralentissait la vue de l'application lors d'um \textit{tick}. Afin de résoudre ce problème, j'ai mis en place un autre timer, celui-ci ne venant pas de la vue et je l'ai instancié dans un processus que la vue. De ce fait, chaque fois qu'il y a un tick du timer celui ne ralenti en rien la vue.
+Le coût en ressources d'un \textit{timer} venant de la vue ralentissait la vue de l'application lors d'um \textit{tick}. Afin de résoudre ce problème, j'ai mis en place un autre timer, celui-ci étant par défaut lancé dans un autre processus que la vue. De ce fait, chaque fois qu'il y a un tick du timer celui ne ralenti en rien la vue. Car l'événement qui est appelé à chaque tick ne se trouve pas dans le même thread que la vue.
 
+\begin{lstlisting}
+//Automaticaly excute in another thread
+            this.TimerCheck = new System.Timers.Timer();
+            this.TimerCheck.Enabled = true;
+            this.TimerCheck.Elapsed += new ElapsedEventHandler(OnTimedEvent);
+            this.TimerCheck.Interval = 5000;
+\end{lstlisting}
 
+Étant donné que l'affichage sur une vue depuis un autre Thread que celui dans lequel la vue se trouve est impossible, il faut donc encapsuler la méthode qui affiche la notification avec la méthode \textbf{Invoke((MethodInvoker)delegate{});} qui exécute un délégué sur le thread de la vue.
 
 \section{Tests}
 

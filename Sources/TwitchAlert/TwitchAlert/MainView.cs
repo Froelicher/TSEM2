@@ -18,7 +18,6 @@ namespace TwitchAlert
         private NotificationController _notifController;
         private ChannelController _chanController;
         private StreamController _strmController;
-        private Thread _checkThread;
         private System.Timers.Timer _timerCheck;
 
         public System.Timers.Timer TimerCheck
@@ -27,12 +26,6 @@ namespace TwitchAlert
             set { _timerCheck = value; }
         }
 
-
-        public Thread CheckThread
-        {
-            get { return _checkThread; }
-            set { _checkThread = value; }
-        }
 
         internal UserModel User
         {
@@ -88,25 +81,18 @@ namespace TwitchAlert
             this.NotifController = new NotificationController(this, this.NotifModel);
             this.cmbSearch.SelectedIndex = 0;
 
+            //Automaticaly excute in another thread
             this.TimerCheck = new System.Timers.Timer();
             this.TimerCheck.Enabled = true;
-
-            this.CheckThread = new Thread(this.TimerCheckNewStream);
-            this.CheckThread.Start();
-            
-        }
-
-        private void TimerCheckNewStream()
-        {
             this.TimerCheck.Elapsed += new ElapsedEventHandler(OnTimedEvent);
             this.TimerCheck.Interval = 5000;
+  
         }
 
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             if (this.UsrController.IsConnected())
                 this.FillNotif();
-
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -136,10 +122,6 @@ namespace TwitchAlert
                 MessageBox.Show("Vous devez être connecté");
         }
 
-        private void timerCheckNewStream_Tick(object sender, EventArgs e)
-        {
-            
-        }
 
         private void FillNotif()
         {
@@ -254,12 +236,12 @@ namespace TwitchAlert
                 follow.FlatStyle = FlatStyle.Flat;
                 follow.FlatAppearance.BorderSize = 0;
 
-                if (!this.UsrController.CheckIsFollowed(listStreams[i, 2]))
+                if (!this.UsrController.CheckIsFollowed(listStreams[i, 5]))
                 {
                     follow.Text = "Follow";
                     follow.Click += (s, e) =>
                     {
-                        this.ChanController.FollowChannel(listStreams[test, 2]);
+                        this.ChanController.FollowChannel(listStreams[test, 5]);
                         follow.Text = "Unfollow";
                         this.Invalidate();
                     }; 
@@ -269,7 +251,7 @@ namespace TwitchAlert
                     follow.Text = "Unfollow";
                     follow.Click += (s, e) =>
                     {
-                        this.ChanController.UnFollowChannel(listStreams[test, 2]);
+                        this.ChanController.UnFollowChannel(listStreams[test, 5]);
                         follow.Text = "Follow";
                         this.Invalidate();
                     }; 
@@ -287,7 +269,7 @@ namespace TwitchAlert
                 play.ForeColor = Color.White;
                 play.FlatAppearance.BorderSize = 0;
                 play.FlatStyle = FlatStyle.Flat;
-                play.Click += (s, e) => { ChannelView channelView = new ChannelView(listStreams[test, 2]);
+                play.Click += (s, e) => { ChannelView channelView = new ChannelView(listStreams[test, 5]);
                                           channelView.Show();
                                         };
                 gPanel.Controls.Add(play);

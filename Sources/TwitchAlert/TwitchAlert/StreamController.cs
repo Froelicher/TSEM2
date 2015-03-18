@@ -10,7 +10,7 @@ namespace TwitchAlert
     class StreamController
     {
 
-        private const int NB_INFOS_STREAM = 5;
+        private const int NB_INFOS_STREAM = 6;
 
         private MainView _view;
         private StreamModel _model;
@@ -45,6 +45,7 @@ namespace TwitchAlert
                 arrayInfosStreams[i, 2] = arrayStreams[i].channel.display_name;
                 arrayInfosStreams[i, 3] = arrayStreams[i].game;
                 arrayInfosStreams[i, 4] = arrayStreams[i].viewers.ToString();
+                arrayInfosStreams[i, 5] = arrayStreams[i].channel.name;
             }
             return arrayInfosStreams;
         }
@@ -61,6 +62,7 @@ namespace TwitchAlert
                 arrayInfosStreams[i, 2] = arrayStreams[i].channel.display_name;
                 arrayInfosStreams[i, 3] = arrayStreams[i].game;
                 arrayInfosStreams[i, 4] = arrayStreams[i].viewers.ToString();
+                arrayInfosStreams[i, 5] = arrayStreams[i].channel.name;
             }
             return arrayInfosStreams;
         }

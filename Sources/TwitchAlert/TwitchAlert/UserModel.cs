@@ -81,7 +81,8 @@ namespace TwitchAlert
             if(this.IsConnected())
             {
                 Streams streamsFollowed = this.CmdCurl.SendRequest<Streams>("https://api.twitch.tv/kraken/streams/followed", "GET", this.AccessToken);
-                this.StreamsFollowed = new List<Stream>(streamsFollowed.streams);
+                if(streamsFollowed != null)
+                    this.StreamsFollowed = new List<Stream>(streamsFollowed.streams);
             }
         }
 
@@ -90,7 +91,8 @@ namespace TwitchAlert
             if (this.IsConnected())
             {
                 Follows channelsFollowed = this.Js.Serialize<Follows>("https://api.twitch.tv/kraken/users/" + this.CurrentUser.name + "/follows/channels");
-                this.ChannelsFollowed = new List<Follow>(channelsFollowed.follows);
+                if(channelsFollowed != null)
+                    this.ChannelsFollowed = new List<Follow>(channelsFollowed.follows);
             }
         }
 
@@ -163,7 +165,7 @@ namespace TwitchAlert
         {
             for (int i = 0; i < this.ChannelsFollowed.Count(); i++)
             {
-                if (this.ChannelsFollowed[i].channel.display_name == channel_name)
+                if (this.ChannelsFollowed[i].channel.name == channel_name)
                 {
                     return true;
                 }

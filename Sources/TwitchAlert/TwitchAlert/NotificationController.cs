@@ -1,8 +1,10 @@
-﻿using System;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Controller of notification
+ * Date : 18 / 03 / 2015
+ */ 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert
@@ -24,12 +26,21 @@ namespace TwitchAlert
             set { _view = value; }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="view">Main view</param>
+        /// <param name="model">Notification model</param>
         public NotificationController(MainView view, NotificationModel model)
         {
             this.NotifModel = model;
             this.View = view;
         }
 
+        /// <summary>
+        /// Check if a new stream has begin
+        /// </summary>
+        /// <returns>list of new stream</returns>
         public List<string> CheckNewStreamOnline()
         {
             List<string> result = new List<string>();

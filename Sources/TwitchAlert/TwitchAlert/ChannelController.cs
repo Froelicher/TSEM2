@@ -1,8 +1,10 @@
-﻿using System;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Controller of channel
+ * Date : 18 / 03 / 2015
+ */ 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert
@@ -42,28 +44,50 @@ namespace TwitchAlert
             set { _usrModel = value; }
         }
 
+        /// <summary>
+        /// Constructor with the main view and the user model
+        /// </summary>
+        /// <param name="view">main view</param>
+        /// <param name="usrModel">user model</param>
         public ChannelController(MainView view, UserModel usrModel)
         {
             this.MainView = view;
             this.UsrModel = usrModel;
         }
 
+        /// <summary>
+        /// Constructor with the channel view and the stream model
+        /// </summary>
+        /// <param name="view">channel view</param>
+        /// <param name="model">stream model</param>
         public ChannelController(ChannelView view, StreamModel model)
         {
             this.ChanView = view;
             this.StrmModel = model;
         }
 
+        /// <summary>
+        /// Get nb stream online
+        /// </summary>
+        /// <returns>nb stream online</returns>
         public int GetNbStreamOnline()
         {
             return this.UsrModel.StreamsFollowed.Count();
         }
 
+        /// <summary>
+        /// Get nb channels followed
+        /// </summary>
+        /// <returns>nb channels followed</returns>
         public int GetNbChannelFollowed()
         {
             return this.UsrModel.ChannelsFollowed.Count();
         }
 
+        /// <summary>
+        /// Get infos of online streams to display
+        /// </summary>
+        /// <returns>infos online streams</returns>
         public string[,] GetInfosDisplayStreamsOnline()
         {
             this.UsrModel.FillStreamsFollowed();
@@ -83,6 +107,10 @@ namespace TwitchAlert
             return arrayInfosStreams;
         }
 
+        /// <summary>
+        /// Get infos of channels to display
+        /// </summary>
+        /// <returns>infos channels</returns>
         public string[,] GetInfosDisplayChannels()
         {
             List<Follow> listChannels = this.UsrModel.ChannelsFollowed;
@@ -98,6 +126,11 @@ namespace TwitchAlert
             return arrayInfosChannels;
         }
 
+        /// <summary>
+        /// Get all infos channel for the channel view
+        /// </summary>
+        /// <param name="channel_name">channel name</param>
+        /// <returns>all infos</returns>
         public string[] GetAllInfosChannel(string channel_name)
         {
             Streams currentStream = this.StrmModel.GetAllInfosStream(channel_name);
@@ -128,6 +161,10 @@ namespace TwitchAlert
             return arrayInfosStream;
         }
 
+        /// <summary>
+        /// Follow a channel
+        /// </summary>
+        /// <param name="channel_name">channel name</param>
         public void FollowChannel(string channel_name)
         {
             if(!this.UsrModel.CheckIsFollowed(channel_name))
@@ -136,6 +173,10 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// Unfollow a channel
+        /// </summary>
+        /// <param name="channel_name">channel name</param>
         public void UnFollowChannel(string channel_name)
         {
             if (this.UsrModel.CheckIsFollowed(channel_name))

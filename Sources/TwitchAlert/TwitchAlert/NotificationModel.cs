@@ -1,9 +1,10 @@
-﻿using System;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Model of notification
+ * Date : 18 / 03 / 2015
+ */ 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert

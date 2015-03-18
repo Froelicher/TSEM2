@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Login view
+ * Date : 18 / 03 / 2015
+ */ 
+using System;
 using System.Windows.Forms;
 
 namespace TwitchAlert
@@ -33,6 +31,10 @@ namespace TwitchAlert
 
         }
 
+        /// <summary>
+        /// Constructor designated
+        /// </summary>
+        /// <param name="mainView"></param>
         public LoginView(MainView mainView)
         {
             InitializeComponent();
@@ -41,6 +43,11 @@ namespace TwitchAlert
             this.UsrController = new UserController(this.MView.User, this);
         }
 
+        /// <summary>
+        /// To clear cookies for the connection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void wbLogin_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             string[] Cookies = System.IO.Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.Cookies));
@@ -58,6 +65,11 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// To check the access token in the url of webBrowser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_checkUrl_Tick(object sender, EventArgs e)
         {
             string search = "access_token";

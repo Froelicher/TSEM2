@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Send a html request with cURL
+ * Date : 18 / 03 / 2015
+ */ 
+using Newtonsoft.Json;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace TwitchAlert
 {

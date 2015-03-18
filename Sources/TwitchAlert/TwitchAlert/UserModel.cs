@@ -1,8 +1,11 @@
-﻿using System;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Model of user
+ * Date : 18 / 03 / 2015
+ */ 
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert
@@ -56,6 +59,9 @@ namespace TwitchAlert
                 }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public UserModel()
         {
             this.CmdCurl = new Curl();
@@ -63,6 +69,10 @@ namespace TwitchAlert
             this.AccessToken = "";
         }
 
+        /// <summary>
+        /// If the user is connected
+        /// </summary>
+        /// <returns>true or false</returns>
         public bool IsConnected()
         {
             if(this.AccessToken != "")
@@ -86,6 +96,9 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// Fill the list with the channel followed by user
+        /// </summary>
         public void FillChannelsFollowed()
         {
             if (this.IsConnected())
@@ -161,6 +174,11 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// Check if the channel is followed
+        /// </summary>
+        /// <param name="channel_name">channel name</param>
+        /// <returns>true or false</returns>
         public bool CheckIsFollowed(string channel_name)
         {
             for (int i = 0; i < this.ChannelsFollowed.Count(); i++)

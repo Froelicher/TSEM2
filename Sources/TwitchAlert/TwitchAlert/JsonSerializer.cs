@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : Receive information by API Twitch formatted in Json.
+ * Date : 18 / 03 / 2015
+ */ 
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
-using TwitchAlert.TwitchModels;
 
 namespace TwitchAlert
 {

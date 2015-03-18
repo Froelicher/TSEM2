@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿/*
+ * Author : JP. Froelicher
+ * Description : View of details channel
+ * Date : 18 / 03 / 2015
+ */ 
+using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TwitchAlert
@@ -20,6 +19,10 @@ namespace TwitchAlert
             set { _chanController = value; }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="channel_name">channel name</param>
         public ChannelView(string channel_name)
         {
             InitializeComponent();
@@ -31,6 +34,10 @@ namespace TwitchAlert
             this.lbl_game.Location = new Point(this.lbl_playing.Location.X + 5 + lbl_playing.Width, this.lbl_game.Location.Y);
         }
 
+        /// <summary>
+        /// Complete the view with infos
+        /// </summary>
+        /// <param name="infos">infos</param>
         private void CompleteView(string[] infos)
         {
             Uri uri = null;

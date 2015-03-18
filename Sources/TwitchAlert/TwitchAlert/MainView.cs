@@ -5,7 +5,6 @@ using System.IO;
 using System.Net;
 using System.Windows.Forms;
 using System.Timers;
-using System.Threading;
 
 namespace TwitchAlert
 {
@@ -69,6 +68,9 @@ namespace TwitchAlert
             set { _notifModel = value; }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainView()
         {
             InitializeComponent();
@@ -89,12 +91,22 @@ namespace TwitchAlert
   
         }
 
+        /// <summary>
+        /// When the timer tick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
             if (this.UsrController.IsConnected())
                 this.FillNotif();
         }
 
+        /// <summary>
+        /// When the button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(this.UsrController.IsConnected())
@@ -106,6 +118,11 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// When the online stream button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStreamsOnline_Click(object sender, EventArgs e)
         {
             if(this.UsrController.IsConnected())
@@ -114,6 +131,11 @@ namespace TwitchAlert
                 MessageBox.Show("Vous devez être connecté");
         }
 
+        /// <summary>
+        /// When the channel button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChannel_Click(object sender, EventArgs e)
         {
             if (this.UsrController.IsConnected())
@@ -122,11 +144,15 @@ namespace TwitchAlert
                 MessageBox.Show("Vous devez être connecté");
         }
 
-
+        /// <summary>
+        /// Pop the notification if a new stream begin.
+        /// </summary>
         private void FillNotif()
         {
             List<string> listInfo = null;
             listInfo = this.NotifController.CheckNewStreamOnline();
+
+            //To seed the componant in view in another thread
             this.Invoke((MethodInvoker)delegate
             {
                 if (listInfo != null)
@@ -156,21 +182,39 @@ namespace TwitchAlert
             });
         }
 
+        /// <summary>
+        /// Display the streams in view
+        /// </summary>
+        /// <param name="listStream"></param>
         private void DisplayStreamsOnline(string[,] listStream)
         {
             this.CreatePanelStreams(this.ChanController.GetNbStreamOnline(), listStream);    
         }
 
+        /// <summary>
+        /// Display the popular streams in view
+        /// </summary>
+        /// <param name="listStream"></param>
         private void DisplayStreamsPopular(string[,] listStream)
         {
             this.CreatePanelStreams(this.StrmController.GetNbStreamsPopular(), listStream);
         }
 
+        /// <summary>
+        /// Display the search streams in view
+        /// </summary>
+        /// <param name="listStream"></param>
+        /// <param name="request"></param>
         private void DisplayStreamsSearch(string[,] listStream, string request)
         {
             this.CreatePanelStreams(this.StrmController.GetNbStreamsSearch(request), listStream);
         }
 
+        /// <summary>
+        /// Generate the list of stream in view
+        /// </summary>
+        /// <param name="nbPanel"></param>
+        /// <param name="listStreams"></param>
         private void CreatePanelStreams(int nbPanel, string[,] listStreams)
         {
             this.panelStreams.Controls.Clear();
@@ -284,6 +328,10 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// Generate the list of the channels followed
+        /// </summary>
+        /// <param name="listChannels"></param>
         private void DisplayChannelsFollowed(string[,] listChannels)
         {
             this.panelStreams.Controls.Clear();
@@ -341,6 +389,11 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// When the button search is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if(this.UsrController.IsConnected())
@@ -362,6 +415,11 @@ namespace TwitchAlert
             
         }
 
+        /// <summary>
+        /// When the popular streams button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStreamsPopular_Click(object sender, EventArgs e)
         {
             if(this.UsrController.IsConnected())
@@ -370,6 +428,11 @@ namespace TwitchAlert
                 MessageBox.Show("Vous devez être connecté");
         }
 
+        /// <summary>
+        /// To reduced the view in the notify icon
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainView_Resize(object sender, EventArgs e)
         {
             IconTwitchAlert.BalloonTipTitle = "Twitch Alert is reduced";
@@ -387,6 +450,11 @@ namespace TwitchAlert
             }
         }
 
+        /// <summary>
+        /// To open the view with the notify icon : double click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void IconTwitchAlert_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             this.Show();

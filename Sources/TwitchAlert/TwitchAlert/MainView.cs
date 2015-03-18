@@ -311,7 +311,8 @@ namespace TwitchAlert
                 preview.Location = new Point(15, 35);
                 preview.Size = new Size(150, 82);
                 preview.SizeMode = PictureBoxSizeMode.StretchImage;
-                preview.Load(listChannels[i, 0]);
+                if(listChannels[i,0] != null)
+                    preview.Load(listChannels[i, 0]);
 
                 //CREATE LABEL_CHANNEL_NAME
                 Label channel = new Label();

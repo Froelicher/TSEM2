@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChannelController.cs" />
-    <Compile Include="ChannelModel.cs" />
     <Compile Include="ChannelView.cs">
       <SubType>Form</SubType>
     </Compile>
